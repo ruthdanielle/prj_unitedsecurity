@@ -13,3 +13,5 @@ git commit -m "comentário" -> só pra área de staging os arquivos e fica aguar
 git push -> faz o push do repositório 
 
 git pull -> atualiza seu repoistório local
+
+git checkout -b "nome da branch" -> cria a branch
