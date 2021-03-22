@@ -1,0 +1,47 @@
+{
+    "name": "alannonat0/unitedsecurit",
+        "description": "Academical development work",
+        "minimum-stability": "stable",
+        "license": "proprietary",
+        "authors": [
+            {
+                "name": "Alan Nonato",
+                "email": "alan_nonato.silva@hotmail.com",
+                "role": "Back-End Developer"
+            },
+            {
+                "name": "Ruth Danielle",
+                "email": "ruth.danielle00@uni9.edu.br",
+                "role": "Front-End Developer"
+            },
+            {
+                "name": "Julio Cesar Góis",
+                "email": "jucesargois@uni9.edu.br",
+                "role": "Databases Developer"
+            },
+            {
+                "name": "Danilo Antonio Rêgo",
+                "email": "danilo.25.ar@uni9.edu.br",
+                "role": "Cloud architecture"
+            },
+            {
+                "name": "Gabriel Silveira Neto ",
+                "email": "gabriel.silveira.neto@uni9.edu.br",
+                "role": "Developer & tester"
+            }    
+        ],
+        "autoload": {
+            "psr-4": {
+                "Source\\": "source/",
+                "Data\\": "data/"
+    
+            },
+            "files": [
+                "config/config.php"
+            ]
+        },
+        "require": {
+            "coffeecode/router": "1.0.5",
+            "coffeecode/datalayer": "1.1.2"
+        }
+}
