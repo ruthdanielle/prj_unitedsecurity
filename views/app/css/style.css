@@ -1,0 +1,513 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
+
+
+body{
+    background-image: url(../src/background2.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    margin: 0 auto;
+    color: #292929;
+}
+
+/*___________TOPO___________*/
+
+header{
+    height: 25%; 
+    width: 100%;
+    background: rgba(255, 255, 255, 0.79);
+}
+
+.login{
+    background: rgba(228, 225, 252, 0.77);
+    padding: 5px;
+    width: 145px;
+    float: right;
+    text-align: center;
+    font-size: 13px; 
+    border: 2px solid #0a5db1;
+    border-radius: 13px;
+    font-family: "Verdana";
+    margin-top: 5px;
+    margin-right: 5px;
+}
+
+.login a{
+    text-decoration: none;
+    color: #121212;
+}
+
+.logo img{
+    padding-top: 0px;
+    width: 360px;
+}
+
+
+/*___________MENU___________*/
+
+.menu nav{
+    background: rgb(2, 53, 118);
+    height: 30px;
+    width: 100%;
+}
+
+.menu nav ul{
+    list-style-type:none;
+    height: 30px;
+  
+}
+
+.menu nav ul li{
+    display: inline-block;
+    line-height: 30px;
+    height: 30px;
+    width: 24%;
+    text-align: center;
+    color:#fff; 
+    font-size: 1.2em; 
+    font-family:'Verdana'; 
+    border-right: 1px solid #000;
+}
+
+.menu nav ul li:last-child{
+    border-right: 0;
+}
+
+.menu nav ul li a{
+    text-decoration: none;
+    color: #f4eeee;
+    text-shadow: 1px 0.5px 0.5px #000;
+    display: block;
+    
+}
+.menu nav ul li a:hover{
+    color: #6aa9f7;
+   
+}
+
+/*___________MENU APÓS O LOGIN___________*/
+
+.menu2 nav{
+    background: rgb(2, 53, 118);
+    height: 30px;
+    width: 100%;
+}
+
+.menu2 nav ul{
+    list-style-type:none;
+    height: 30px;
+  
+}
+
+.menu2 nav ul li{
+    display: inline-block;
+    line-height: 30px;
+    height: 30px;
+    width: 19%;
+    text-align: center;
+    color:#fff; 
+    font-size: 1.2em; 
+    font-family:'Verdana'; 
+    border-right: 1px solid #000;
+    
+}
+
+.menu2 nav ul li:last-child{
+    border-right: 0;
+}
+
+.menu2 nav ul li a{
+    text-decoration: none;
+    color: #f4eeee;
+    text-shadow: 1px 0.5px 0.5px #000;
+    display: block;
+    
+}
+.menu2 nav ul li a:hover{
+    color: #6aa9f7;
+   
+}
+
+
+/*___________TÍTULOS___________*/
+
+.titulo{
+    font-size: 40px;
+    font-family: "Verdana";
+    color: #292929;
+    text-align: center;
+}
+
+h1{
+    text-align: center;
+    color: #0a5db1;
+    font-size: 30px;
+}
+
+h2{
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+}
+
+h3{
+    text-align: center;
+    color: rgb(2, 53, 118); 
+}
+
+.subtitulo{
+    margin-top: 4%;
+    padding-left: 4%;
+    display: inline-block;
+    text-align: center justify;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 32px;
+    color: #023576;
+    text-shadow: 1px 1px 1px #b3d3fc;
+}
+
+
+/*___________CORPO E TEXTOS___________*/
+
+
+section{
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    min-height: 100%;    
+}
+
+.wrapper{
+    margin: 0 auto;
+    margin-left: 10%;
+}
+
+p{
+    color: #191a1c;
+    font-size: 18px;
+    width: 70%;
+    margin: auto;
+    font-family: 'Verdana';
+}
+
+.erro{
+    text-align: center;
+    color: rgba(255, 39, 0, 0.89);
+    font-size: 19px;
+}
+
+
+/*___________CORPO DO INDEX___________*/
+
+
+.content{
+    margin: 3% 1% 5% 6%;
+    border: solid 1% #000;
+    border-radius: 10px;
+    width: 40%;
+    float: left;
+    text-align: center;
+}
+.content p{
+    width: 90%;
+    padding-bottom: 1em ;
+    text-align: justify;
+
+}
+.content img{
+    float: none;
+    border-style: none;
+    margin-bottom: -2%;
+    border-radius: 10px;
+    width: 10em;
+    height: 5em;
+}
+
+
+
+
+/*___________CADASTRO___________*/
+
+
+.slog{
+    margin-top: -20px;
+    color: #0a5db1;
+}
+#cadastro{
+    margin: auto;
+    width: 70% ;
+    min-width: 500px;
+
+    height: 200px;
+}
+
+
+
+legend, label{
+	font-family: "arial";
+	font-size:12px;
+    font-weight:bold;
+    color: #0a5db1;
+}
+label{
+	width:70px;
+	height:30px;
+    display: inline-flex;
+	text-align:right;
+	margin-right: 10px;
+	font-family: 'Verdana';
+	font-size:12px;
+	font-weight:bold;
+}
+#cadastrar{
+    float: left;
+    margin-top: 5%;
+    margin-bottom: 4%;
+}
+
+label b{
+    color: red;
+}
+fieldset{
+    opacity: 0.8;
+    margin-left: 5%;
+    margin-bottom:5%;
+    background: rgba(255, 255, 255, 0.97);
+    border-radius: 10px;
+}
+fieldset p{
+    font-family:arial;
+	font-size: 25px;
+    font-weight:bold;
+    color: #0a5db1;
+    margin-left: 30%;
+}
+#email, #name{
+    margin-top: 5%;
+}
+
+#img_pessoal{
+    background-image: url(../src/pessoal2.png);
+    background-size: 30%;
+    float: left;
+    width: 350px;
+}
+.img_log{
+    background-image: url(../src/login2.png);
+    background-size: 17%;
+    float: left;
+    width: 350px;
+
+}
+.img_log, #img_pessoal{
+    background-position: bottom right ;
+    background-repeat: no-repeat;
+}
+
+
+
+
+/*___________LOGIN___________*/
+
+
+#LogIn{
+    display: block;
+    width: 50%;
+    position: relative;
+    margin: 0 auto;
+
+}
+#LogIn fieldset label{
+    margin-left: 25%;
+}
+#LogIn fieldset p{
+    text-align: center;
+    margin-left: auto;
+    margin-bottom: 5%;
+}
+#LogIn fieldset input{
+    height: 2em;
+}
+#aCadastro{
+    margin: 21% 0% 10% 3%;
+    text-decoration: none;
+   float: left;
+}
+#logar{
+    float: right;
+    margin: 20% 3% 0% 0%;
+    width: 4em;
+}
+#logologin{
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 5%; 
+}
+
+
+
+/*___________SERVIÇOS___________*/
+
+.produto{
+    font-size: 18px;
+    width: 500px;
+    height: 450px;
+    float: left;
+    margin: 0 0 20px 20px;
+    background: #023576;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    color: #f7f7f7;
+    text-align: center;
+}
+
+.produto img{
+   width: 420px;
+}
+
+
+
+/*___________SLIDER DO INDEX___________*/
+
+
+#slider, #id{
+    
+    width: 100%;
+    height: 330px;
+    background: white;
+
+
+}
+
+
+
+/*___________CONTATO___________*/
+
+
+#contato{
+    width: 50%;
+    position: relative;
+    margin: 0 auto;
+}
+.contatos h1{
+    margin-bottom: 5%;
+}
+
+
+textarea{
+    width: 60%;
+    padding-left: 10px;
+    height: 80px;
+    line-height: 10px;
+    border-radius: 15px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+#enviar{
+    margin-left: 20%;
+    width: 10%;
+    height: 25px;
+    border-radius: 3px;
+    width: 90px;
+}
+.contatos input{
+    border-radius: 5px;
+    border-style: solid;
+    font-family: 'Verdana';
+}
+
+
+/*___________MEUS DADOS___________*/
+
+.dados{
+    width: 100%;
+}
+
+.dados p{
+    font-size: 1em;
+    text-align: justify;
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    padding: 1em;
+    width: 50%;
+}
+
+.dados p:first-child{
+    border-top: 1px solid black; 
+}
+.linkancora h3{
+    margin-left: 21%;
+    margin-top: 2%;
+}
+.linkancora h3 a{
+    text-decoration: none;
+    border-radius: 5px;
+    float: left;
+    margin-left: 5%;
+}
+
+
+
+/*___________MEUS SERVIÇOS___________*/
+
+select{
+    margin-left: 23.8%;
+    width: 20%;
+    padding: 0.3%;
+    font-family: 'Verdana';
+    font-size: 16px;
+}
+
+#ativar, #cancela_servico{
+    text-align: center;
+    margin-left: 23.7%;
+    width: 7%;
+    padding: 0.4%;
+    border-radius: 3px;
+    border-style: solid;
+    background: rgb(2, 53, 118);
+    color: white;
+    
+}
+
+/*___________ATUALIZA___________*/
+
+#attField{
+    width: 50%;
+    margin: 0 auto;
+}
+
+.centraliza{
+    width: 80%;  
+    margin-top: 5%;
+    padding: 5%;
+}
+.centraliza label{
+    width: 35%;
+}
+
+
+/*___________SOBRE___________*/
+
+#sectionSobre p{
+    text-align: justify;
+    
+}
+
+
+
+/*___________FOOTER___________*/
+
+footer{
+    display: inline-block;
+    margin-top: 9%;
+    width: 100%;
+    height: 9%;
+}
+
+footer h5{
+    text-align: center;
+}
