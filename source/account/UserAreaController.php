@@ -37,10 +37,15 @@ class UserAreaController
     }
 
     //Rota de atualização cadastral.
-    public function userUpdate()
+    public function userUpdate($data)
     {
         $title = 'ATUALIZAR | ';
         require __DIR__ . "/../../views/user/update.php";
+        if ($_POST['atualizar']) {
+            
+            
+        }
+        
     }
 
     //Rota para gestão de serviços (contratação e cancelamentos).

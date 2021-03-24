@@ -84,6 +84,7 @@ $router->group("usuario");
 $router->get("/entrar/{loginalert}", "UserController:login");
 $router->get("/cadastrar/{registeralert}", "UserController:register");
 $router->get("/area/{areaalert}", "UserAreaController:userArea");
+$router->get("/area/atualizar/{updatealert}", "UserAreaController:userUpdate");
 
 
 //ROTAS CADASTRO
@@ -97,12 +98,12 @@ $router->post("/entrar", "UserController:login");
 $router->get("/sair", "UserController:logOut");
 
 //ROTA ATUALIZAR DADOS
-$router->get("/atualizar", "UserController:userUpdate");
 
 $router->get("/area", "UserAreaController:userArea");
 $router->post("/area", "UserAreaController:userArea");
 $router->get("/area/servicos", "UserAreaController:userServices");
 $router->get("/area/atualizar", "UserAreaController:userUpdate");
+$router->post("/area/atualizar", "UserAreaController:userUpdate");
 
 
 

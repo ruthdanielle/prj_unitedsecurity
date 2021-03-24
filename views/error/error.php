@@ -17,11 +17,7 @@ require_once __DIR__ . '/../include/header.php';
     ?>
 </h1>
 <h2>Tente novamente mais tarde <a href="<?= URL_BASE ?>">voltar ao inicio</a></h2>
-<pre>
-<?php
-    print_r($_SESSION);
-?>
-</pre>
+
 <?php
 //chamada de rodapé
 require_once __DIR__ . '/../include/footer.php';
