@@ -3,6 +3,8 @@
 namespace Source\account;
 
 use CoffeeCode\Router\Router;
+use Data\Models\Dao\UpdateDao;
+use Data\Models\Dao\UserDao;
 
 session_start();
 
@@ -43,8 +45,10 @@ class UserAreaController
         require __DIR__ . "/../../views/user/update.php";
         if ($_POST['atualizar']) {
             
-            
+        $dao = new UpdateDao();
+        $alert = $dao->att($_SESSION['usuario']->Id, $_SESSION['usuario']->tipo, $data);
         }
+        
         
     }
 

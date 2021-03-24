@@ -20,10 +20,11 @@ class UserDao extends DataLayer
                 "nome",
                 "cpf",
                 "telefone",
-                "email", "senha",
+                "email",
+                "senha",
                 "dtCadastro",
                 "dtAtt",
-                "tipo"
+                "tipo"    
             ],
             "Id",
             true
@@ -88,6 +89,12 @@ class UserDao extends DataLayer
         }
 
         return $valida;
+    }
+
+    public function clear($input)
+    {
+        $item =  htmlspecialchars($input);
+        return $item;
     }
 
     // Checa se os dados para login confirmam e cria uma Sessão 
