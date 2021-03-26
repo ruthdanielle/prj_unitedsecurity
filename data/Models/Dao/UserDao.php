@@ -24,7 +24,7 @@ class UserDao extends DataLayer
                 "senha",
                 "dtCadastro",
                 "dtAtt",
-                "tipo"    
+                "tipo"
             ],
             "Id",
             true
@@ -130,6 +130,55 @@ class UserDao extends DataLayer
             }
         } else {
             return $alert = base64_encode('loginerror');
+        }
+    }
+
+    //UPDATE DE USUARIOS
+    public function att($id, $data)
+    {
+        //tratamento variaveis do
+        $newTel = filter_var($data['telAtt'], FILTER_SANITIZE_NUMBER_INT);
+        $pass = $data['passwordAtt'];
+        $newPass = $data['passwordAtt1'];
+        $checkPass = $data['passwordAtt2'];
+
+        $conn = Connect::getInstance();
+        $error = Connect::getError();
+
+        // Verificação de erro de conexão, cpf e email existente no banco
+        // Inserção e retorna mensagem para o controlador UserController:register
+        if ($error) {
+            $alert = base64_encode('connecterror');
+        } else {
+
+            $user = (new UserDao())->findById($id, 'telefone, senha');
+
+            if ($user->fail()) {
+                return $user->fail()->getMessage();
+            }
+            if (password_verify($pass, $user->senha)) {
+
+                if ($newPass == $checkPass) {
+                    $user->senha = password_hash($newPass, PASSWORD_DEFAULT);
+
+                    if (isset($newTel)) {
+                        $user->telefone =  $newTel;
+                    }
+
+                    $sql = "UPDATE `cadastro` SET `telefone`= ?,`senha`= ? WHERE Id = ? ;";
+                    $stmt = $conn->prepare($sql);
+                    $stmt->bindValue(1, $user->telefone);
+                    $stmt->bindValue(2, $user->senha);
+                    $stmt->bindValue(3, $id);
+                    $stmt->execute();
+
+                    return $alert = base64_encode('success');
+                } else {
+                    return $alert = base64_encode('newpasserror');
+                }
+            } else {
+                return $alert = base64_encode('passwerror');
+            }
         }
     }
 }

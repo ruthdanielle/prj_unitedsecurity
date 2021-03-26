@@ -16,7 +16,7 @@ require_once __DIR__ . '/../include/header.php';
 
     ?>
 </h1>
-<h2>Tente novamente mais tarde <a href="<?= URL_BASE ?>">voltar ao inicio</a></h2>
+<h2>Tente novamente mais tarde <a href="<?= url() ?>">voltar ao inicio</a></h2>
 
 <?php
 //chamada de rodapé

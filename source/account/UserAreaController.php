@@ -43,13 +43,16 @@ class UserAreaController
     {
         $title = 'ATUALIZAR | ';
         require __DIR__ . "/../../views/user/update.php";
+
         if ($_POST['atualizar']) {
-            
-        $dao = new UpdateDao();
-        $alert = $dao->att($_SESSION['usuario']->Id, $_SESSION['usuario']->tipo, $data);
+
+            if (empty($data['telAtt'])) {
+                $data['telAtt'] = $_SESSION['usuario']->telefone;
+            }
+
+            $dao = new UserDao();
+            $alert = $dao->att($_SESSION['usuario']->Id, $data);
         }
-        
-        
     }
 
     //Rota para gestão de serviços (contratação e cancelamentos).

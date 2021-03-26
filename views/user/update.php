@@ -31,7 +31,7 @@ endif;
             <legend>Preencha o formulario</legend>
 
             <label for="telAtt">Telefone<b>*</b>:</label>
-            <input type="tel" id="telAtt" name="telAtt" placeholder="Somente Numeros" maxlength="11" required /><br>
+            <input type="tel" id="telAtt" name="telAtt" placeholder="Somente Numeros" maxlength="11"  /><br>
 
             <label for="passwordAtt">Senha Atual<b>*</b>:</label>
             <input type="password" id="passwordAtt" name="passwordAtt" placeholder="Digite sua senha" required />
