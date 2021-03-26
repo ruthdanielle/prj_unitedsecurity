@@ -3,7 +3,6 @@
 namespace Source\account;
 
 use CoffeeCode\Router\Router;
-use Data\Models\Dao\UpdateDao;
 use Data\Models\Dao\UserDao;
 
 session_start();
@@ -41,10 +40,11 @@ class UserAreaController
     //Rota de atualização cadastral.
     public function userUpdate($data)
     {
+        
         $title = 'ATUALIZAR | ';
         require __DIR__ . "/../../views/user/update.php";
 
-        if ($_POST['atualizar']) {
+        if (isset($_POST['atualizar'])) {
 
             if (empty($data['telAtt'])) {
                 $data['telAtt'] = $_SESSION['usuario']->telefone;
@@ -53,8 +53,29 @@ class UserAreaController
             $dao = new UserDao();
             $alert = $dao->att($_SESSION['usuario']->Id, $data);
         }
-    }
+        //Verifica se a mensagem foi disparada e redireciona para cada situação
+        $router = new Router(URL_BASE);
+        if (isset($alert)) {
 
+            switch (\base64_decode($alert)) {
+                case 'success':
+                    $router->redirect("/usuario/area/{$alert}");
+                    break;
+                case 'connecterror':
+                    $router->redirect("/ooops/{$alert}");
+                    break;
+                case 'searcherror':
+                    $router->redirect("/ooops/{$alert}");
+                    break;
+                case 'passerror':
+                    $router->redirect("/usuario/area/atualizar/{$alert}");
+                    break;
+                case 'newpasserror':
+                    $router->redirect("/usuario/area/atualizar/{$alert}");
+                    break;
+            }
+        }
+    }
     //Rota para gestão de serviços (contratação e cancelamentos).
     public function userServices()
     {

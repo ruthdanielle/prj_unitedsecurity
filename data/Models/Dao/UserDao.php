@@ -154,7 +154,7 @@ class UserDao extends DataLayer
             $user = (new UserDao())->findById($id, 'telefone, senha');
 
             if ($user->fail()) {
-                return $user->fail()->getMessage();
+                return $alert = base64_encode('searcherror');
             }
             if (password_verify($pass, $user->senha)) {
 
@@ -177,7 +177,7 @@ class UserDao extends DataLayer
                     return $alert = base64_encode('newpasserror');
                 }
             } else {
-                return $alert = base64_encode('passwerror');
+                return $alert = base64_encode('passerror');
             }
         }
     }
