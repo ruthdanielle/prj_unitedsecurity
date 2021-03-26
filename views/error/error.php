@@ -6,13 +6,21 @@ require_once __DIR__ . '/../include/header.php';
 <h1>Ops! um erro foi detectado:
     <?php
 
-    if (base64_decode($data["errcode"]) == 'connecterror') :
-        echo 'Erro de conexão com o banco de dados';
-    elseif (base64_decode($data["errcode"]) == 'accessonegado') :
-        echo 'Acesso negado';
-    else :
-        echo $data["errcode"];
-    endif;
+        $alert = base64_decode($data["errcode"]);
+        switch ($alert) {
+            case 'connecterror':
+                echo 'Erro de conexão com a base de dados';
+                break;
+            case 'accessonegado':
+                echo 'Acesso negado';
+                break;
+            case 'searcherror':
+                echo 'Erro ao atualiza!';
+                break;
+            default:
+                echo $data["errcode"];
+                break;
+        }
 
     ?>
 </h1>

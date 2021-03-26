@@ -136,7 +136,7 @@ class UserDao extends DataLayer
     //UPDATE DE USUARIOS
     public function att($id, $data)
     {
-        //tratamento variaveis do
+        //tratamento variaveis do front-end
         $newTel = filter_var($data['telAtt'], FILTER_SANITIZE_NUMBER_INT);
         $pass = $data['passwordAtt'];
         $newPass = $data['passwordAtt1'];
@@ -145,13 +145,12 @@ class UserDao extends DataLayer
         $conn = Connect::getInstance();
         $error = Connect::getError();
 
-        // Verificação de erro de conexão, cpf e email existente no banco
-        // Inserção e retorna mensagem para o controlador UserController:register
+        //verifica se existe algum erro de conexão e atualiza os dados
         if ($error) {
             $alert = base64_encode('connecterror');
         } else {
 
-            $user = (new UserDao())->findById($id, 'telefone, senha');
+            $user = (new UserDao())->findById($id, 'telefone, senha, dtAtt');
 
             if ($user->fail()) {
                 return $alert = base64_encode('searcherror');
@@ -172,11 +171,21 @@ class UserDao extends DataLayer
                     $stmt->bindValue(3, $id);
                     $stmt->execute();
 
+                    $_SESSION['usuario']->telefone = $user->telefone;
+                    $_SESSION['usuario']->senha = $user->senha;
+                    unset($_SESSION['usuario']->dtAtt);
+                    $_SESSION['usuario']->dtAtt = $user->dtAtt;
+
                     return $alert = base64_encode('success');
                 } else {
                     return $alert = base64_encode('newpasserror');
                 }
             } else {
+                echo"<pre>";
+                print_r($_SESSION['usuario']);
+                echo "<hr>";
+                print_r($user);
+                echo"</pre>";
                 return $alert = base64_encode('passerror');
             }
         }

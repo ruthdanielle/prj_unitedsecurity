@@ -13,13 +13,14 @@ if (isset($data['updatealert'])) :
 
     $alert = base64_decode($data['updatealert']);
 
-    if ($alert == 'sucesso') : ?>
-        <h3>Cadastro feito com sucesso! Faça seu login!</h3>
-    <?php endif;
-
-    if ($alert == 'updateerror') : ?>
-        <h3 class="erro">Email e/ou senha incorretos. Por favor, tente novamente</h3>
-<?php endif;
+    switch ($alert) :
+        case 'passerror':?>
+            <h3 class="erro">Senha Atual incorreta!</h3>
+        <?php break;
+        case 'newpasserror':?>
+            <h3 class="erro">Campos de nova senha diferentes!</h3>
+        <?php break;
+    endswitch;
 endif;
 ?>
 
@@ -30,8 +31,8 @@ endif;
         <fieldset class="img_log centraliza">
             <legend>Preencha o formulario</legend>
 
-            <label for="telAtt">Telefone<b>*</b>:</label>
-            <input type="tel" id="telAtt" name="telAtt" placeholder="Somente Numeros" maxlength="11"  /><br>
+            <label for="telAtt">Telefone:</label>
+            <input type="tel" id="telAtt" name="telAtt" placeholder="Somente Numeros" maxlength="20"  /><br>
 
             <label for="passwordAtt">Senha Atual<b>*</b>:</label>
             <input type="password" id="passwordAtt" name="passwordAtt" placeholder="Digite sua senha" required />
