@@ -181,11 +181,6 @@ class UserDao extends DataLayer
                     return $alert = base64_encode('newpasserror');
                 }
             } else {
-                echo"<pre>";
-                print_r($_SESSION['usuario']);
-                echo "<hr>";
-                print_r($user);
-                echo"</pre>";
                 return $alert = base64_encode('passerror');
             }
         }

@@ -48,7 +48,7 @@ endif;
         </fieldset><br>
 
         <div class="linkancora centraliza">
-            <h3><a href="<?= url('usuario/area/servicos') ?>">Clique aqui para gerenciar seus serviços</a></h3>
+            <h3><a href="<?= url('usuario/area/servicos') ?>">Gerenciar serviços</a></h3>
             
         </div>
 

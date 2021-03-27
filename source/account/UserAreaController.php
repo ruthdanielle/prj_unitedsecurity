@@ -3,6 +3,7 @@
 namespace Source\account;
 
 use CoffeeCode\Router\Router;
+use Data\Models\Dao\ServicoContratadoDao;
 use Data\Models\Dao\UserDao;
 
 session_start();
@@ -76,10 +77,16 @@ class UserAreaController
             }
         }
     }
+
     //Rota para gestão de serviços (contratação e cancelamentos).
-    public function userServices()
+    public function userServices($data)
     {
+        $list = new ServicoContratadoDao();
+        $userServices = $list->list($_SESSION['usuario']->Id);
+        
+        
         $title = 'SERVIÇOS | ';
         require __DIR__ . "/../../views/user/management.php";
+        
     }
 }
