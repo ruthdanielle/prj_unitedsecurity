@@ -61,7 +61,11 @@ class UserAreaController
 
             switch (\base64_decode($alert)) {
                 case 'success':
-                    $this->router->redirect("/usuario/area/{$alert}");
+                    if ($this->user->tipo) {
+                        $this->router->redirect("/admin/area/{$alert}");
+                    } else {
+                        $this->router->redirect("/usuario/area/{$alert}");
+                    }
                     break;
                 case 'connecterror':
                     $this->router->redirect("/ooops/{$alert}");
@@ -83,12 +87,16 @@ class UserAreaController
     //ROTA GET mostra o conteudo da pagina
     public function userServices($data)
     {
-
-        $list = new ServicoContratadoDao();
+        if (!$this->user->tipo) {
+            $list = new ServicoContratadoDao();
         $userServices = $list->list($this->user->Id);
 
         $title = 'SERVIÇOS | ';
         require __DIR__ . "/../../views/user/management.php";
+        
+        }else {
+            $this->router->redirect("/admin/area");
+        }
         
     }
     //ROTA POST PROCESSA E REDIRECIONA OS FORMULARIOS

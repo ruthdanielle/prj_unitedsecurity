@@ -121,6 +121,7 @@ $router->get("/area/{areaalert}", "AdminAreaController:adminArea");
 $router->get("/area", "AdminAreaController:adminArea");
 $router->post("/area", "AdminAreaController:adminArea");
 
+$router->get("/area/promover", "AdminAreaController:adminPromoter");
 
 $router->dispatch();
 
