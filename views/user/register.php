@@ -45,7 +45,7 @@ endif;
             <div id="vdCpf"></div><br>
 
             <label for="tel">Telefone<b>*</b>:</label>
-            <input type="tel" id="tel" name="tel" placeholder="Somente Numeros" maxlength="20" required /><br>
+            <input type="tel" id="tel" name="tel" placeholder="Somente Numeros" maxlength="14" required /><br>
 
         </fieldset>
 

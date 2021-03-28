@@ -4,10 +4,35 @@ require_once __DIR__ . '/../include/header.php';
 ?>
 
 
-
-
-
 <h2 class="titulo">Gerir Serviços de <?= $_SESSION['usuario']->nome; ?> </h2>
+
+
+<?php
+//callback
+if (isset($data['servicesalert'])) :
+
+    $alert = base64_decode($data['servicesalert']);
+
+    switch ($alert):
+        case 'activeSuccess': ?>
+            <h3>Serviço Ativado com Sucesso!</h3>
+        <?php break;
+        case 'activeError': ?>
+            <h3 class="erro">Serviço ja contratado</h3>
+        <?php break;
+        case 'cancelSuccess': ?>
+            <h3>Serviço cancelado com sucesso</h3>
+        <?php break;
+        case 'ServiceNotFound': ?>
+            <h3 class="erro">Serviço não contratado ou ja cancelado</h3>
+        <?php break;
+        case 'cancelError': ?>
+            <h3 class="erro">Erro ao Cancelar</h3>
+        <?php break;
+    endswitch;
+endif;
+
+?>
 
 <section id='meusservicos'>
 

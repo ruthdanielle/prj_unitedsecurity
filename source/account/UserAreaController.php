@@ -12,15 +12,17 @@ class UserAreaController
 {
 
     private $user;
+    private $router;
 
     //Construtor verifica se o usuario autenticado é um usuario comun ou um administrador.
     public function __construct()
     {
+        $this->router = new Router(URL_BASE);
         $this->user = $_SESSION['usuario'];
         if ((empty($this->user->autenticado) && $this->user->autenticado != true)) {
-            $router = new Router(URL_BASE);
+
             $alert = base64_encode("accessonegado");
-            $router->redirect("/ooops/{$alert}");
+            $this->router->redirect("/ooops/{$alert}");
         }
     }
 
@@ -41,7 +43,7 @@ class UserAreaController
     //Rota de atualização cadastral.
     public function userUpdate($data)
     {
-        
+
         $title = 'ATUALIZAR | ';
         require __DIR__ . "/../../views/user/update.php";
 
@@ -55,42 +57,76 @@ class UserAreaController
             $alert = $dao->att($this->user->Id, $data);
         }
         //Verifica se a mensagem foi disparada e redireciona para cada situação
-        $router = new Router(URL_BASE);
         if (isset($alert)) {
 
             switch (\base64_decode($alert)) {
                 case 'success':
-                    $router->redirect("/usuario/area/{$alert}");
+                    $this->router->redirect("/usuario/area/{$alert}");
                     break;
                 case 'connecterror':
-                    $router->redirect("/ooops/{$alert}");
+                    $this->router->redirect("/ooops/{$alert}");
                     break;
                 case 'searcherror':
-                    $router->redirect("/ooops/{$alert}");
+                    $this->router->redirect("/ooops/{$alert}");
                     break;
                 case 'passerror':
-                    $router->redirect("/usuario/area/atualizar/{$alert}");
+                    $this->router->redirect("/usuario/area/atualizar/{$alert}");
                     break;
                 case 'newpasserror':
-                    $router->redirect("/usuario/area/atualizar/{$alert}");
+                    $this->router->redirect("/usuario/area/atualizar/{$alert}");
                     break;
             }
         }
     }
 
     //Rota para gestão de serviços (contratação e cancelamentos).
+    //ROTA GET mostra o conteudo da pagina
     public function userServices($data)
     {
+
         $list = new ServicoContratadoDao();
         $userServices = $list->list($this->user->Id);
-        
+
         $title = 'SERVIÇOS | ';
         require __DIR__ . "/../../views/user/management.php";
+        
+    }
+    //ROTA POST PROCESSA E REDIRECIONA OS FORMULARIOS
+    public function userServicesPost($data)
+    {
 
-        //ATIVA SERVIÇO
+         //ATIVA SERVIÇO
         if (isset($_POST['ativar'])) {
             $activate = new ServicoContratadoDao();
             $alert = $activate->activate($this->user->Id, $data);
+        }
+
+        //CANCELA SERVIÇO
+        if (isset($_POST['cancela_servico'])) {
+            $cancel = new ServicoContratadoDao();
+            $alert = $cancel->cancel($this->user->Id, $data);
+        }
+        //REDIRECIONANDO MENSAGENS
+        if (isset($alert)) {
+            switch (\base64_decode($alert)) {
+                case 'connecterror':
+                    $this->router->redirect("/ooops/$alert");
+                case 'activeSuccess':
+                    $this->router->redirect("/usuario/area/servicos/$alert");
+                    break;
+                case 'activeError':
+                    $this->router->redirect("/usuario/area/servicos/$alert");
+                    break;
+                case 'cancelSuccess':
+                    $this->router->redirect("/usuario/area/servicos/$alert");
+                    break;
+                case 'ServiceNotFound':
+                    $this->router->redirect("/usuario/area/servicos/$alert");
+                    break;
+                case 'cancelError':
+                    $this->router->redirect("/usuario/area/servicos/$alert");
+                    break;
+            }
         }
     }
 }
