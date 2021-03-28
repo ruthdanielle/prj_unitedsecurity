@@ -28,7 +28,7 @@ class UserAreaController
     public function userArea($data)
     {
         //verifica quem esta tratando dados Usuario comun ou administrador e seta o titulo para cada situação.
-        if (isset($_SESSION['usuario']) && ($_SESSION['usuario']->tipo == true)) {
+        if (isset($this->user) && ($this->user->tipo == true)) {
             $title = 'GERENCIAR | ';
         } else {
             $title = 'MINHA AREA | ';
@@ -48,11 +48,11 @@ class UserAreaController
         if (isset($_POST['atualizar'])) {
 
             if (empty($data['telAtt'])) {
-                $data['telAtt'] = $_SESSION['usuario']->telefone;
+                $data['telAtt'] = $this->user->telefone;
             }
 
             $dao = new UserDao();
-            $alert = $dao->att($_SESSION['usuario']->Id, $data);
+            $alert = $dao->att($this->user->Id, $data);
         }
         //Verifica se a mensagem foi disparada e redireciona para cada situação
         $router = new Router(URL_BASE);
@@ -82,11 +82,15 @@ class UserAreaController
     public function userServices($data)
     {
         $list = new ServicoContratadoDao();
-        $userServices = $list->list($_SESSION['usuario']->Id);
-        
+        $userServices = $list->list($this->user->Id);
         
         $title = 'SERVIÇOS | ';
         require __DIR__ . "/../../views/user/management.php";
-        
+
+        //ATIVA SERVIÇO
+        if (isset($_POST['ativar'])) {
+            $activate = new ServicoContratadoDao();
+            $alert = $activate->activate($this->user->Id, $data);
+        }
     }
 }

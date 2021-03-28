@@ -41,7 +41,7 @@ class UserDao extends DataLayer
         // Verificação de erro de conexão, cpf e email existente no banco
         // Inserção e retorna mensagem para o controlador UserController:register
         if ($error) {
-            $alert = base64_encode('connecterror');
+            return $alert = base64_encode('connecterror');
         } elseif (!(is_numeric($user->getCpf())) || !(is_numeric($user->getTelefone()))) {
             return $alert = base64_encode('interror');
         } else {

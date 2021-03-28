@@ -2,7 +2,7 @@
 //LISTA SERVIÇOS ATIVOS
 if (isset($userServices)) :
     for ($i = 0; $i < sizeof($userServices); $i++) :
-        if ($userServices[$i]->situacao == 1) :
+        if ($userServices[$i]) :
             switch ($userServices[$i]->idServico):
                 case 1: ?>
                     <p>Biometria <input type='checkbox' checked='checked' disabled></p>

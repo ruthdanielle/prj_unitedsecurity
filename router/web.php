@@ -77,7 +77,7 @@ $router->namespace("Source\account");
  * login
  * userUpdate
  * userArea
- * userManagement
+ * userServices
  *****************/
 $router->group("usuario");
 //ROTAS ALERTAS
@@ -107,7 +107,7 @@ $router->post("/area/atualizar", "UserAreaController:userUpdate");
 
 //ROTAS SERVIÇOS
 $router->get("/area/servicos", "UserAreaController:userServices");
-
+$router->post("/area/servicos", "UserAreaController:userServices");
 
 
 /*****************
