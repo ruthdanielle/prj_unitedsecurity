@@ -20,7 +20,8 @@ class UserDao extends DataLayer
                 "nome",
                 "cpf",
                 "telefone",
-                "email", "senha",
+                "email",
+                "senha",
                 "dtCadastro",
                 "dtAtt",
                 "tipo"
@@ -90,6 +91,12 @@ class UserDao extends DataLayer
         return $valida;
     }
 
+    public function clear($input)
+    {
+        $item =  htmlspecialchars($input);
+        return $item;
+    }
+
     // Checa se os dados para login confirmam e cria uma Sessão 
     public function login($data)
     {
@@ -123,6 +130,64 @@ class UserDao extends DataLayer
             }
         } else {
             return $alert = base64_encode('loginerror');
+        }
+    }
+
+    //UPDATE DE USUARIOS
+    public function att($id, $data)
+    {
+        //tratamento variaveis do front-end
+        $newTel = filter_var($data['telAtt'], FILTER_SANITIZE_NUMBER_INT);
+        $pass = $data['passwordAtt'];
+        $newPass = $data['passwordAtt1'];
+        $checkPass = $data['passwordAtt2'];
+
+        $conn = Connect::getInstance();
+        $error = Connect::getError();
+
+        //verifica se existe algum erro de conexão e atualiza os dados
+        if ($error) {
+            $alert = base64_encode('connecterror');
+        } else {
+
+            $user = (new UserDao())->findById($id, 'telefone, senha, dtAtt');
+
+            if ($user->fail()) {
+                return $alert = base64_encode('searcherror');
+            }
+            if (password_verify($pass, $user->senha)) {
+
+                if ($newPass == $checkPass) {
+                    $user->senha = password_hash($newPass, PASSWORD_DEFAULT);
+
+                    if (isset($newTel)) {
+                        $user->telefone =  $newTel;
+                    }
+
+                    $sql = "UPDATE `cadastro` SET `telefone`= ?,`senha`= ? WHERE Id = ? ;";
+                    $stmt = $conn->prepare($sql);
+                    $stmt->bindValue(1, $user->telefone);
+                    $stmt->bindValue(2, $user->senha);
+                    $stmt->bindValue(3, $id);
+                    $stmt->execute();
+
+                    $_SESSION['usuario']->telefone = $user->telefone;
+                    $_SESSION['usuario']->senha = $user->senha;
+                    unset($_SESSION['usuario']->dtAtt);
+                    $_SESSION['usuario']->dtAtt = $user->dtAtt;
+
+                    return $alert = base64_encode('success');
+                } else {
+                    return $alert = base64_encode('newpasserror');
+                }
+            } else {
+                echo"<pre>";
+                print_r($_SESSION['usuario']);
+                echo "<hr>";
+                print_r($user);
+                echo"</pre>";
+                return $alert = base64_encode('passerror');
+            }
         }
     }
 }

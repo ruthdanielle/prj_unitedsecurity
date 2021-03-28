@@ -13,16 +13,17 @@ class User
 
     public function __construct(array $data)
     {
-        function clear($input){
-            $item =  htmlspecialchars($input); 
-            return $item;
-        }
-
-        $this->nome = clear(filter_var($data['name'], FILTER_SANITIZE_STRING));
-        $this->cpf = clear(filter_var($data['cpf'], FILTER_SANITIZE_NUMBER_INT));
-        $this->telefone = clear(filter_var($data['tel'], FILTER_SANITIZE_NUMBER_INT)) ;
-        $this->email = clear(filter_var($data['email'], FILTER_VALIDATE_EMAIL)) ;
+        $this->nome = $this->clear(filter_var($data['name'], FILTER_SANITIZE_STRING));
+        $this->cpf = $this->clear(filter_var($data['cpf'], FILTER_SANITIZE_NUMBER_INT));
+        $this->telefone = $this->clear(filter_var($data['tel'], FILTER_SANITIZE_NUMBER_INT));
+        $this->email = $this->clear(filter_var($data['email'], FILTER_VALIDATE_EMAIL));
         $this->senha = password_hash($data['password'], PASSWORD_DEFAULT);
+    }
+
+    public function clear($input)
+    {
+        $item =  htmlspecialchars($input);
+        return $item;
     }
 
     public function getNome()

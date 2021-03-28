@@ -1,6 +1,6 @@
 <?php
 // Seta o local especifico do host
-define("URL_BASE", "http://localhost/quarto/unitedsecuritMVC/");
+define("URL_BASE", "http://localhost/fromGIT/prj_unitedsecurity/");
 
 // Configuração de banco de dados
 define("DATA_LAYER_CONFIG", [

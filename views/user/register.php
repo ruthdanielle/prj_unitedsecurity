@@ -9,20 +9,19 @@ require_once __DIR__ . '/../include/header.php';
 // callback area   
 if (isset($data['registeralert'])) :
 
-        $alert = base64_decode($data['registeralert']);
+    $alert = base64_decode($data['registeralert']);
 
-        if ($alert == 'emailerror') : ?>
+    switch ($alert):
+        case 'emailerror': ?>
             <h4 class='erro'>Email já cadastrado</h4>
-        <?php endif;
-        if ($alert == 'cpferror') : ?>
+        <?php break;
+        case 'cpferror': ?>
             <h4 class='erro'>Cpf já cadastrado</h4>
-        <?php endif;
-
-        if ($alert == 'interror') : ?>
+        <?php break;
+        case 'interror': ?>
             <h4 class='erro'>Prencha apenas numeros nos campos CPF e TELEFONE</h4>
-        <?php endif;
-
-
+        <?php break;
+    endswitch;
 endif;
 ?>
 

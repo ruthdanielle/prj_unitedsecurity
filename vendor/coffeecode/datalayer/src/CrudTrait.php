@@ -20,8 +20,8 @@ trait CrudTrait
     protected function create(array $data): ?int
     {
         if ($this->timestamps) {
-            $data["created_at"] = (new DateTime("now"))->format("Y-m-d H:i:s");
-            $data["updated_at"] = $data["created_at"];
+            $data["dtCadastro"] = (new DateTime("now"))->format("Y-m-d H:i:s");
+            $data["dtAtt"] = $data["created_at"];
         }
         $data = filter_var_array($data, FILTER_SANITIZE_SPECIAL_CHARS);
 
@@ -49,7 +49,7 @@ trait CrudTrait
     protected function update(array $data, string $terms, string $params): ?int
     {
         if ($this->timestamps) {
-            $data["updated_at"] = (new DateTime("now"))->format("Y-m-d H:i:s");
+            $data["dtAtt"] = (new DateTime("now"))->format("Y-m-d H:i:s");
         }
         $data = filter_var_array($data, FILTER_SANITIZE_SPECIAL_CHARS);
 

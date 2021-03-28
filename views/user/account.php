@@ -5,7 +5,24 @@ require_once __DIR__ . '/../include/header.php';
 
 <section>
     <h1 class="titulo">Área do Usuario </h1>;
-    <h2>Bem vindo <?= $_SESSION['usuario']->nome ?></h2>
+
+    <?php
+    // calbacks 
+    if (isset($data['areaalert'])) :
+
+        $alert = base64_decode($data['areaalert']);
+        
+        switch ($alert) :
+            case 'userSuccess':?>
+                <h2>Bem vindo <?= $_SESSION['usuario']->nome ?></h2>
+            <?php break;
+            case 'success':?>
+                <h3>Dados atualizados com sucesso!</h3>
+            <?php break;
+        endswitch;
+    endif;
+    ?>
+    
 </section>
 
 <section id="dados">
@@ -30,8 +47,8 @@ require_once __DIR__ . '/../include/header.php';
 </section>
 
 <div class="linkancora">
-    <h3><a href="<?= url('usuario/area/servicos')?>">Clique aqui para gerenciar seus serviços</a></h3>
-    <h3><a href="<?= url('usuario/area/atualizar')?>">Clique aqui para atualizar seus dados</a></h3>
+    <h3><a href="<?= url('usuario/area/servicos') ?>">Clique aqui para gerenciar seus serviços</a></h3>
+    <h3><a href="<?= url('usuario/area/atualizar') ?>">Clique aqui para atualizar seus dados</a></h3>
 </div>
 
 <?php

@@ -13,15 +13,14 @@ require_once __DIR__ . '/../include/header.php';
 
         $alert = base64_decode($data['loginalert']);
 
-        if ($alert == 'sucesso') : ?>
-            <h3>Cadastro feito com sucesso! Faça seu login!</h3>
-        <?php endif;
-
-        if ($alert == 'loginerror') : ?>
-            <h3 class="erro">Email e/ou senha incorretos. Por favor, tente novamente</h3>
-    <?php endif;
-
-
+        switch ($alert):
+            case 'sucesso': ?>
+                <h3>Cadastro feito com sucesso! Faça seu login!</h3>
+            <?php break;
+            case 'loginerror': ?>
+                <h3 class="erro">Email e/ou senha incorretos. Por favor, tente novamente</h3>
+            <?php break;
+        endswitch;
     endif;
     ?>
 
