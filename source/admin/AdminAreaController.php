@@ -3,6 +3,7 @@
 namespace Source\admin;
 
 use CoffeeCode\Router\Router;
+use Data\Models\Dao\ContactDao;
 
 session_start();
 class AdminAreaController
@@ -24,8 +25,18 @@ class AdminAreaController
 
     // Roda para area central do admin
     public function adminArea($data){
+        $contact = new ContactDao();
+        $result = $contact->list();
         $title = 'GERENCIAR | ';
         require __DIR__."/../../views/admin/management.php";
+        
+        
+
+    }
+    public function adminAreaPost($data){
+        $contact = new ContactDao();
+        $alert = $contact->done($data);
+        $this->router->redirect("/admin/area/$alert");
     }
 
     // Rota para promover conta

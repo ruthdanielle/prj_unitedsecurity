@@ -119,7 +119,7 @@ $router->namespace("Source\admin");
 $router->group("admin");
 $router->get("/area/{areaalert}", "AdminAreaController:adminArea");
 $router->get("/area", "AdminAreaController:adminArea");
-$router->post("/area", "AdminAreaController:adminArea");
+$router->post("/area", "AdminAreaController:adminAreaPost");
 
 $router->get("/area/promover", "AdminAreaController:adminPromoter");
 

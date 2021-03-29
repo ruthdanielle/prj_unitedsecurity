@@ -17,10 +17,10 @@ class ContactDao extends DataLayer
                 "nome",
                 "telefone",
                 "email",
-                "mensagem"
+                "mensagem",
             ],
-            "id",
-            true
+            "Id",
+            false
         );
     }
 
@@ -51,5 +51,28 @@ class ContactDao extends DataLayer
             $alert = base64_encode('sucesso');
             return $alert;
         }
+    }
+
+    public function list()
+    {
+        $contact = $this->find()->order("dtContato ASC")->order("situacao ASC")->fetch(true);
+        for ($i = 0; $i < sizeof($contact); $i++) {
+            if ($contact[$i]) {
+                $contacts[] = [$contact[$i]->Id, $contact[$i]->nome, $contact[$i]->telefone, $contact[$i]->email, $contact[$i]->assunto, $contact[$i]->mensagem, $contact[$i]->dtContato, $contact[$i]->situacao];
+            }
+        }
+        return $contacts;
+    }
+
+    public function done($id){
+        $id = $id['idContato'];
+        $done = $this->find("Id = :cid", "cid={$id}")->fetch(true);
+        $done[0]->situacao = true;
+       foreach ($done as $item) {
+           $contact = $item->data();
+       }
+       $done[0]->save();
+        return $alert = base64_encode('solve');;
+        
     }
 }
