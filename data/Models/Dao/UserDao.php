@@ -185,4 +185,25 @@ class UserDao extends DataLayer
             }
         }
     }
+
+    //Busca usuarios cadastrados por CPF ou email
+    public function search($type, $value)
+    {
+
+        if ($type == 'cpf') {
+            $user = $this->find("cpf LIKE '%{$value}%';", " ", "Id, nome, cpf, telefone, email, tipo")->fetch(true);
+        } else {
+            $user = $this->find("email LIKE '%{$value}%';", " ", "Id, nome, cpf, telefone, email, tipo")->fetch(true);
+        }
+        if (isset($user)) {
+
+            foreach ($user as $item) {
+                $data[] = $item->data();
+            }
+        } else {
+            return base64_encode('noresult');
+        }
+
+        return isset($data) ? $data : [];
+    }
 }

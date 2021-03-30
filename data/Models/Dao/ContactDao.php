@@ -17,7 +17,7 @@ class ContactDao extends DataLayer
                 "nome",
                 "telefone",
                 "email",
-                "mensagem",
+                "mensagem"
             ],
             "Id",
             false
