@@ -33,9 +33,15 @@
 
             <label for="emailcon">E-mail<b>*</b>:</label>
             <input type="email" id="emailcon" name="emailcon" placeholder="Informe seu e-mail" required/>
-
+            
             <label for="subject">Assunto<b>*</b>:</label>
-            <input type="text" id="subject" name="subject" placeholder="Digite o motivo do contato" required/><br>
+            <select name="subject" id="subject">
+                <option disabled selected='true'>Selecione o assunto...</option>
+                <option value="Contratar Serviços">Contratar serviços</option>
+                <option value="Duvida sobre produtos">Duvida sobre produtos</option>
+                <option value="Sugestão de melhoria">Sugestão de melhoria</option>
+                <option value="Outros">Outros</option>
+            </select>
      
             <label for="mensagem">Mensagem<b>*</b>:</label>
             <br><textarea id="mensagem" name="mensagem" style="resize:none"></textarea>

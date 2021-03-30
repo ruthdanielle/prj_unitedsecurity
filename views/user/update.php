@@ -48,7 +48,15 @@ endif;
         </fieldset><br>
 
         <div class="linkancora centraliza">
-            <h3><a href="<?= url('usuario/area/servicos') ?>">Gerenciar serviços</a></h3>
+            <?php
+                if ($_SESSION['usuario']->tipo) :?>
+                    
+                    <h3><a href="<?= url('admin/area') ?>">Voltar</a></h3>
+       
+        <?php   else :?>
+
+                    <h3><a href="<?= url('usuario/area/servicos') ?>">Gerenciar serviços</a></h3>
+        <?php   endif; ?>
             
         </div>
 
