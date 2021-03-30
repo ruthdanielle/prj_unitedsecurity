@@ -206,4 +206,20 @@ class UserDao extends DataLayer
 
         return isset($data) ? $data : [];
     }
+
+    //Atualiza tipo de conta do usuario
+    public function upgrade($data){
+        $id = $data['select'];
+        $type = $data['promo'];
+
+        $user = $this->find("id = :uid", "uid={$id}")->fetch(true);
+        $user[0]->tipo = $type;
+        if ($user[0]->save()) {
+            return base64_encode('upsuccess');
+        }else {
+            return base64_encode('upfail');
+        }
+        return $user;
+        
+    }
 }

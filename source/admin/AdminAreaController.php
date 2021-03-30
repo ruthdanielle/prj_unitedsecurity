@@ -80,7 +80,13 @@ class AdminAreaController
 
         require __DIR__ . "/../../views/admin/promoter.php";
     }
-    public function adminPromoterPost()
+    public function adminPromoterPost($data)
     {
+        $upgrade = new UserDao();
+        $alert = $upgrade->upgrade($data);
+        if ($alert) {
+
+            $this->router->redirect("/admin/area/promover/{$alert}");
+        }
     }
 }
