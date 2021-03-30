@@ -31,43 +31,47 @@ require_once __DIR__ . '/../include/header.php';
 
 <section id='meusservicos'>
     <h3>Ultimos contatos</h3>
-    <div class="dados">
-        <?php
-        
-        // Lista contatos por data e situaçao
-        foreach ($result as $item) :
-            if (!$item[7]) : ?>
 
+    <?php
+
+    // Lista contatos por data e situaçao
+    foreach ($result as $item) : ?>
+        <br>
+        <?php if (!$item->situacao) : ?>
+
+            <div class="dados">
                 <form action="<?= url("admin/area") ?>" method="POST">
-                    <p>Codigo:<?= $item[0]; ?> </p>
-                    <p> assunto: <?= $item[4] ?><br>
-                        Nome: <?= $item[1] ?>
-                        telefone: <?= $item[2] ?><br>
-                        email: <?= $item[3] ?><br>
-                        data: <?= date("d/m/Y", strtotime($item[6]))." às ".date("H:i", strtotime($item[6]))?><br><br>
+                    <p>Codigo:<?= $item->Id; ?> </p>
+                    <p> assunto: <?= $item->assunto ?><br>
+                        Nome: <?= $item->nome ?>
+                        telefone: <?= $item->telefone ?><br>
+                        email: <?= $item->email ?><br>
+                        data: <?= date("d/m/Y", strtotime($item->dtContato)) . " às " . date("H:i", strtotime($item->dtContato)) ?><br><br>
 
-                        mensagem: <br><?= $item[5] ?><br> <br>
+                        mensagem: <br><?= $item->mensagem ?><br> <br>
 
-                        <input type="hidden" name="idContato" value="<?= $item[0]; ?>">
+                        <input type="hidden" name="idContato" value="<?= $item->Id ?>">
                         <button type="submit">respondido</button>
                     </p>
-         
-            <?php else :?>
-    
-                    <p>Codigo: <?= $item[0]; ?>  <span style="text-align: right; float:right;">RESOLVIDO</span> </p>
-                    <p> assunto: <?= $item[4]?><br>
-                        Nome: <?= $item[1] ?>
-                        telefone: <?= $item[2] ?><br>
-                        email: <?= $item[3] ?><br>
-                        data: <?= date("d/m/Y", strtotime($item[6]))." às ".date("H:i", strtotime($item[6]))?><br><br>
+                </form>
+            </div>
 
-                        mensagem: <br><?= $item[5] ?><br> <br>               
-                    </p>
-                
-        <?php endif;
-        endforeach; ?>
-    </div>
-       </form>
+        <?php else : ?>
+            <div class="dados">
+                <p>Codigo: <?= $item->Id; ?> <span style="text-align: right; float:right;">RESOLVIDO</span> </p>
+                <p> assunto: <?= $item->assunto ?><br>
+                    Nome: <?= $item->nome ?>
+                    telefone: <?= $item->telefone ?><br>
+                    email: <?= $item->email ?><br>
+                    data: <?= date("d/m/Y", strtotime($item->dtContato)) . " às " . date("H:i", strtotime($item->dtContato)) ?><br><br>
+
+                    mensagem: <br><?= $item->mensagem ?><br> <br>
+                </p>
+            </div>
+
+    <?php endif;
+    endforeach; ?>
+
 </section>
 
 <div class="linkancora">

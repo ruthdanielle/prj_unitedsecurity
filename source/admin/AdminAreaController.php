@@ -46,7 +46,7 @@ class AdminAreaController
     {
         $title = 'ALTERAR CONTA | ';
 
-
+        //Validações para buscar na tabela de usuarios
         if (isset($_GET['buscar'])) {
             $findfor = isset($_GET['buscarpor']) ? $_GET['buscarpor'] : null;
             if ($findfor == 'cpf') {
@@ -59,9 +59,7 @@ class AdminAreaController
                 }
             } else {
 
-                // $find = htmlspecialchars(filter_input(INPUT_GET, 'busca', FILTER_VALIDATE_EMAIL));
-                $find = htmlspecialchars(filter_input(INPUT_GET, 'busca', FILTER_SANITIZE_EMAIL));
-                //$find = filter_var($find, FILTER_VALIDATE_EMAIL);
+                $find = htmlspecialchars(filter_input(INPUT_GET, 'busca', FILTER_SANITIZE_EMAIL)); 
                 if (!$find || \is_numeric($find)) {
                     $alert = base64_encode("invalidemail");
                     $this->router->redirect("/admin/area/promover/{$alert}");

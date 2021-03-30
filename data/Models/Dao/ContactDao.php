@@ -55,13 +55,12 @@ class ContactDao extends DataLayer
 
     public function list()
     {
-        $contact = $this->find()->order("dtContato ASC")->order("situacao ASC")->fetch(true);
-        for ($i = 0; $i < sizeof($contact); $i++) {
-            if ($contact[$i]) {
-                $contacts[] = [$contact[$i]->Id, $contact[$i]->nome, $contact[$i]->telefone, $contact[$i]->email, $contact[$i]->assunto, $contact[$i]->mensagem, $contact[$i]->dtContato, $contact[$i]->situacao];
-            }
+        $contacts = $this->find()->order("dtContato ASC")->order("situacao ASC")->fetch(true);
+        
+        foreach ($contacts as $item) {
+            $contact[] = $item->data();
         }
-        return $contacts;
+        return $contact;
     }
 
     public function done($id){

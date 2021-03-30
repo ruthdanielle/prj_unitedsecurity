@@ -4,7 +4,7 @@ require_once __DIR__ . '/../include/header.php';
 ?>
 
 <section>
-    <h1 class="titulo">Área do Usuario </h1>;
+    <h1 class="titulo">Dados Pessoais </h1>;
 
     <?php
     // calbacks 
