@@ -1,6 +1,9 @@
 <?php
 // Seta o local especifico do host
-define("URL_BASE", "http://localhost/fromGIT/prj_unitedsecurity/");
+require_once "configFunc.php";
+
+$urlbase = protocol().$_SERVER['HTTP_HOST'].scriptName();
+define("URL_BASE", $urlbase);
 
 // Configuração de banco de dados
 define("DATA_LAYER_CONFIG", [
