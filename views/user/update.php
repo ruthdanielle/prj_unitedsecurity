@@ -32,7 +32,7 @@ endif;
             <legend>Preencha o formulario</legend>
 
             <label for="telAtt">Telefone:</label>
-            <input type="tel" id="telAtt" name="telAtt" placeholder="Somente Numeros" maxlength="20"  /><br>
+            <input type="tel" id="telAtt" name="telAtt" placeholder="Somente Numeros" maxlength="14"  /><br>
 
             <label for="passwordAtt">Senha Atual<b>*</b>:</label>
             <input type="password" id="passwordAtt" name="passwordAtt" placeholder="Digite sua senha" required />
@@ -48,7 +48,7 @@ endif;
         </fieldset><br>
 
         <div class="linkancora centraliza">
-            <h3><a href="<?= url('usuario/area/servicos') ?>">Clique aqui para gerenciar seus serviços</a></h3>
+            <h3><a href="<?= url('usuario/area/servicos') ?>">Gerenciar serviços</a></h3>
             
         </div>
 

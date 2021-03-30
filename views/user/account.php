@@ -47,8 +47,8 @@ require_once __DIR__ . '/../include/header.php';
 </section>
 
 <div class="linkancora">
-    <h3><a href="<?= url('usuario/area/servicos') ?>">Clique aqui para gerenciar seus serviços</a></h3>
-    <h3><a href="<?= url('usuario/area/atualizar') ?>">Clique aqui para atualizar seus dados</a></h3>
+    <h3><a href="<?= url('usuario/area/servicos') ?>">Gerenciar serviços</a></h3>
+    <h3><a href="<?= url('usuario/area/atualizar') ?>">Atualizar dados</a></h3>
 </div>
 
 <?php

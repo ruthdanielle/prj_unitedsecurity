@@ -77,7 +77,7 @@ $router->namespace("Source\account");
  * login
  * userUpdate
  * userArea
- * userManagement
+ * userServices
  *****************/
 $router->group("usuario");
 //ROTAS ALERTAS
@@ -85,7 +85,7 @@ $router->get("/entrar/{loginalert}", "UserController:login");
 $router->get("/cadastrar/{registeralert}", "UserController:register");
 $router->get("/area/{areaalert}", "UserAreaController:userArea");
 $router->get("/area/atualizar/{updatealert}", "UserAreaController:userUpdate");
-
+$router->get("/area/servicos/{servicesalert}", "UserAreaController:userServices");
 
 //ROTAS CADASTRO
 $router->get("/cadastrar", "UserController:register");
@@ -97,17 +97,17 @@ $router->post("/entrar", "UserController:login");
 //LOGOUT
 $router->get("/sair", "UserController:logOut");
 
-//ROTA ATUALIZAR DADOS
-
+//ROTAS AREA DO USUARIO
 $router->get("/area", "UserAreaController:userArea");
 $router->post("/area", "UserAreaController:userArea");
-$router->get("/area/servicos", "UserAreaController:userServices");
+
+//ROTAS ATUALIZAR DADOS
 $router->get("/area/atualizar", "UserAreaController:userUpdate");
 $router->post("/area/atualizar", "UserAreaController:userUpdate");
 
-
-
-$router->get("/gerenciar", "UserController:userManagement");
+//ROTAS SERVIÇOS
+$router->get("/area/servicos", "UserAreaController:userServices");
+$router->post("/area/servicos", "UserAreaController:userServicesPost");
 
 
 /*****************

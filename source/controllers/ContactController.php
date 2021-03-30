@@ -36,11 +36,5 @@ class ContactController
         } else {
             $router->redirect("/contato/$alert");
         }
-
-
-
-        echo "<pre>";
-        print_r($alert);
-        echo "</pre>";
     }
 }
