@@ -30,7 +30,7 @@ endif;
     <fieldset>
 
         <br>
-        <p>Preencha o Formulário a seguir</p><br>
+        <p class="cadastroTitulo">Preencha o Formulário a seguir</p><br>
 
 
         <fieldset id="img_pessoal">

@@ -4,9 +4,9 @@ require_once __DIR__ . '/../include/header.php';
 ?>
 
 
-<h2 class="titulo">Gerir Serviços de <?= $_SESSION['usuario']->nome; ?> </h2>
+<h2 class="titulo">Gerenciar Serviços</h2>
 
-
+<div class="dados-fundo">
 <?php
 //callback
 if (isset($data['servicesalert'])) :
@@ -36,7 +36,7 @@ endif;
 
 <section id='meusservicos'>
 
-    <br>
+    
 
     <h1>Serviços Ativos</h1>
 
@@ -46,7 +46,7 @@ endif;
         //chamada de lista de serviços
         include_once __DIR__ . '/../include/list.php';
         ?>
-        <br>
+        
 
     </div>
 </section>
@@ -58,7 +58,7 @@ endif;
 
 
             <h1>Ativar Serviços</h1>
-            <br>
+            
 
             <div class='dados'>
                 <select name='servico'>
@@ -68,11 +68,10 @@ endif;
                     <option value='3'>Workshop</option>
                     <option value='4'>Serviços de Segurança</option>
                 </select>
+			</div>
+            <input type='submit' value='Ativar' id='ativar' name='ativar'>
 
-                <br><br>
-                <input type='submit' value='Ativar' id='ativar' name='ativar'>
-
-            </div>
+            
         </form>
     </section>
 
@@ -94,20 +93,25 @@ endif;
                     <option value='4'>Serviços de Segurança</option>
                 </select>
 
-                <br><br>
-                <input type='submit' value='Cancelar' id='cancela_servico' name='cancela_servico'>
+			</div>
+                
+			<input type='submit' value='Cancelar' id='cancela_servico' name='cancela_servico'>
 
-            </div>
+            
         </form>
     </section>
 
 </section>
 
 
-<div class="linkancora">
+<div class="alinhado">
     <h3><a href="<?= url('usuario/area/atualizar') ?>">Atualizar dados</a></h3>
-    <h3><a href="<?= url('usuario/area') ?>">Minha Area</a></h3>
+    <h3><a href="<?= url('usuario/area') ?>">Minha Área</a></h3>
 </div>
+	
+	</div>
+	
+
 
 <?php
 //chamada de rodapé

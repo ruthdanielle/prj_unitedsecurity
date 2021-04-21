@@ -22,7 +22,7 @@ class UserController
     {
 
         //definindo titulo da pagina
-        $title = 'ENTRAR | ';
+        $title = 'Entrar | ';
         //incluindo a pagina na tela
         require __DIR__ . "/../../views/user/login.php";
 
@@ -62,7 +62,7 @@ class UserController
     public function register($data)
     {
         // Definindo titulo da pagina
-        $title = 'CADASTRAR | ';
+        $title = 'Cadastro | ';
 
         //verifica se a variavel esta setada e instancia um usuario com os dados contidos no array e o resgistra.
         if (isset($_POST['cadastrar'])) {

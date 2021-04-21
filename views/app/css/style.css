@@ -1,5 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600&display=swap');
 
+@media only screen and (max-width: 991px) {
+    .mobile-esconde{ display: none !important; }
+}
+
+@media only screen and (min-width: 992px) {
+    .desktop-esconde{ display: none !important; }
+}
+
 
 body{
     background-image: url(../src/background2.jpg);
@@ -85,6 +93,20 @@ header{
    
 }
 
+.botao-menu{
+	border: 0;
+	width: 25px;
+	height: 25px;
+	margin-left: 0.6rem;
+	background-color: transparent;
+	
+}
+
+.menu-mobile{
+	background-color: rgb(2, 53, 118);
+	
+}
+
 /*___________MENU APÓS O LOGIN___________*/
 
 .menu2 nav{
@@ -129,10 +151,59 @@ header{
 }
 
 
+.menuLateral {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 4;
+  top: 0;
+  left: 0;
+  background-image: linear-gradient(45deg, #20589f, #ffffff );
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 0px;
+}
+
+.menu-alinhado{
+	justify-content: space-between;
+	display: flex;
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+.menu-alinhado a{
+	text-decoration: none;
+}
+
+.menuLateral ul{
+	list-style-type: circle;
+	color: #0a5db1
+	
+}
+
+.menuLateral ul li{
+	margin-top: 20px;
+}
+
+.menuLateral ul li a{
+	text-decoration: none;
+	font-size: 16px;
+	font-family: 'Verdana';
+	color: #05010f;
+	font-weight:bolder
+	
+}
+
+.menuLateral h3{
+	font-family: 'Verdana';
+	font-size: 20px;
+	color: rgb(2, 33, 118);
+}
+
 /*___________TÍTULOS___________*/
 
 .titulo{
-    font-size: 40px;
+    font-size: 30px;
     font-family: "Verdana";
     color: #292929;
     text-align: center;
@@ -238,7 +309,7 @@ p{
     width: 70% ;
     min-width: 500px;
 
-    height: 200px;
+    height: auto;
 }
 
 
@@ -250,8 +321,8 @@ legend, label{
     color: #0a5db1;
 }
 label{
-	width:70px;
-	height:30px;
+	
+	height:25px;
     display: inline-flex;
 	text-align:right;
 	margin-right: 10px;
@@ -280,11 +351,9 @@ fieldset p{
 	font-size: 25px;
     font-weight:bold;
     color: #0a5db1;
-    margin-left: 30%;
+    
 }
-#email, #name{
-    margin-top: 5%;
-}
+
 
 #img_pessoal{
     background-image: url(../src/pessoal2.png);
@@ -295,7 +364,7 @@ fieldset p{
 .img_log{
     background-image: url(../src/login2.png);
     background-size: 17%;
-    float: left;
+    
     width: 350px;
 
 }
@@ -310,42 +379,73 @@ fieldset p{
 /*___________LOGIN___________*/
 
 
-#LogIn{
-    display: block;
-    width: 50%;
-    position: relative;
-    margin: 0 auto;
+#LogIn {
+    /* display: block; */
+    width: 40%;
+    /* position: relative; */
+   
+    /* justify-content: center; */
+}
 
-}
-#LogIn fieldset label{
-    margin-left: 25%;
-}
 #LogIn fieldset p{
     text-align: center;
     margin-left: auto;
     margin-bottom: 5%;
 }
-#LogIn fieldset input{
-    height: 2em;
-}
+
 #aCadastro{
-    margin: 21% 0% 10% 3%;
+    margin: 0;
     text-decoration: none;
-   float: left;
+	font-family: 'Verdana';
+	color:  #0a5db1
 }
-#logar{
-    float: right;
-    margin: 20% 3% 0% 0%;
-    width: 4em;
+
+#aCadastro:hover{
+   color: #1bcc52;
+	text-decoration:underline;
+}
+.entrar{
+    font-family: 'Verdana';
+	color: #ffffff;
+	font-size: 15px;
+	background-color: #2c5b90;
+	border-color: inherit;
+    margin:0;
+    line-height: 1.6rem;
 }
 #logologin{
     width: 50%;
     margin-left: 25%;
-    margin-top: 5%; 
+   
 }
 
+.alinhado{
+	justify-content: space-between;
+	display: flex;
+	margin-top: 3rem
+}
 
+.margem{
+	margin: 0 11.590rem
+}
 
+.justify{
+	display: flex;
+	justify-content: center;
+	margin-bottom: 0.2rem;
+	margin-top: 1.2rem
+}
+
+.atualizar-justify{
+	display: flex;
+	
+	margin-bottom: 1.5rem;
+}
+
+.conteudo{
+	display: flex;
+	justify-content: center
+}
 /*___________SERVIÇOS___________*/
 
 .produto{
@@ -379,6 +479,7 @@ fieldset p{
 
 
 }
+ 
 
 
 
@@ -389,7 +490,9 @@ fieldset p{
     width: 50%;
     position: relative;
     margin: 0 auto;
+	
 }
+
 .contatos h1{
     margin-bottom: 5%;
 }
@@ -421,18 +524,31 @@ textarea{
 
 /*___________MEUS DADOS___________*/
 
-.dados{
-    width: 100%;
+
+
+.dados-fundo{
+	background-image: linear-gradient(180deg, rgba(194, 220, 237, 0.54), rgba(255, 255, 255, 0.54));
+	width: 60%;
+	margin: 0 auto;
+	border-radius: 10px;
+	padding: 10px 30px 10px 30px;
+	border: 1px solid #000;
+}
+
+.dados-fundo h1{
+	text-align: left !important;
 }
 
 .dados p{
     font-size: 1em;
-    text-align: justify;
+    text-align: left;
     border-bottom: 1px solid black;
     border-left: 1px solid black;
     border-right: 1px solid black;
     padding: 1em;
-    width: 50%;
+	
+	margin: 0 auto;
+   
 }
 
 .dados p:first-child{
@@ -454,29 +570,27 @@ textarea{
 /*___________MEUS SERVIÇOS___________*/
 
 select{
-    margin-left: 23.8%;
-    width: 20%;
     padding: 0.3%;
     font-family: 'Verdana';
     font-size: 16px;
 }
 
 #ativar, #cancela_servico{
-    text-align: center;
-    margin-left: 23.7%;
-    width: 7%;
-    padding: 0.4%;
-    border-radius: 3px;
-    border-style: solid;
-    background: rgb(2, 53, 118);
-    color: white;
+	margin-top: 0.8rem;
+	font-family: 'Verdana';
+	color: #ffffff;
+	font-size: 15px;
+	background-color: #2c5b90;
+	border-color: inherit;
+    line-height: 1.6rem;
     
+
 }
 
 /*___________ATUALIZA___________*/
 
 #attField{
-    width: 50%;
+    width: 0%;
     margin: 0 auto;
 }
 
@@ -503,11 +617,177 @@ select{
 
 footer{
     display: inline-block;
-    margin-top: 9%;
+    
     width: 100%;
-    height: 9%;
+   
 }
 
 footer h5{
     text-align: center;
+}
+
+
+
+
+@media only screen and (max-width: 700px){
+	.img-responsive{
+	width: 100% !important;
+		
+}
+	.content{
+		width: inherit !important;
+	}
+	
+	.conteudo1{
+		display: inline-flex
+	}
+	
+	.conteudo2{
+		display: inline-flex
+	}
+	
+	.titulo{
+    font-size: 30px;
+    font-family: "Verdana";
+    color: #292929;
+    text-align: center;
+	}
+	
+	.menu-mobile nav ul li{
+		width: auto !important;
+		
+	}
+	
+	.menu-mobile2 nav ul li{
+		width: auto !important;
+		
+	}
+	
+	#contato{
+		width: 100% !important;
+		margin: 0 auto;
+	}
+	
+	.contatos{
+		justify-content: center
+	}
+	
+	#img_pessoal{
+    background-image: none !important;
+    background-size: 0 !important;
+    width: auto !important;
+}
+	.cadastroTitulo{
+		font-size: 15px;
+		width: 100% !important;
+		margin: auto 25px;
+	}
+	
+	.img_log{
+    background-image: none !important;
+    background-size: 0 !important;
+    width: auto !important;
+
+}
+	
+	#cadastro{
+		min-width: 100% !important;
+		height: auto !important;
+	}
+	
+	
+	.produto{
+    font-size: 18px;
+    width: auto !important;
+    height: auto !important;
+    
+    margin: 0 20px 20px 0 !important;
+    background: #023576;
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    color: #f7f7f7;
+    text-align: center;
+	}
+
+	.produto img{
+	   width: 100% !important;
+	}
+	
+	#logologin{
+		display: none !important 
+	}
+	
+	fieldset p {
+    font-family: 'Verdana';
+    font-size: 15px;
+    font-weight: bold;
+    color: #0a5db1;
+    margin-left: 0;
+	width: auto !important;
+}
+	
+	.conteudo{
+	display: flex;
+	justify-content: center;
+		margin: 0 !important
+}
+	
+	#LogIn {
+    /* display: block; */
+    width: auto !important;
+    /* position: relative; */
+   
+    /* justify-content: center; */
+}
+	
+	.justify{
+		margin-bottom: 0.5rem;
+	
+	}
+	
+	.margem{
+	margin: 0 30px !important
+}
+	
+	.dados p {
+    width: 75% !important;
+	text-align: left;
+	font-size: 0.97rem
+}
+	
+	#attField {
+     width: 80%; 
+      
+}
+	.dados{
+    width: 100%;
+	margin: 0 auto
+	
+}
+	
+	.dados-fundo{
+		width: 80%;
+	
+	}
+	
+}
+
+
+@media only screen and (max-width: 360px){
+	.logo img{
+		width: 200px;
+		display: flex;
+		justify-content: center;
+		margin: 0 auto;
+	}
+}
+
+#subject{
+    margin-left: 0 !important;
+    width: inherit!important;
+    padding: 0.3%;
+    font-family: 'Verdana';
+    font-size: 13px !important;
+	border-radius: 5px
 }

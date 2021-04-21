@@ -15,7 +15,7 @@ require_once __DIR__ . '/../include/header.php';
                 echo 'Acesso negado';
                 break;
             case 'searcherror':
-                echo 'Erro ao atualiza!';
+                echo 'Erro ao atualizar!';
                 break;
             default:
                 echo $data["errcode"];
@@ -24,9 +24,8 @@ require_once __DIR__ . '/../include/header.php';
 
     ?>
 </h1>
-<h2>Tente novamente mais tarde <a href="<?= url() ?>">voltar ao inicio</a></h2>
+<h2>Tente novamente mais tarde </h2>
+<div class="conteudo">
+	<h3><a href="<?= url() ?>" >Voltar ao inicio</a></h3>
+</div>
 
-<?php
-//chamada de rodapé
-require_once __DIR__ . '/../include/footer.php';
-?>

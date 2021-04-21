@@ -22,3 +22,11 @@ function slide5(){
     document.getElementById("id").src = "./views/app/src/img5.webp";
     setTimeout("slide1()", 5000);
 }
+
+function abrirMenu() {
+  document.getElementById("menuMobile").style.width = "250px";
+}
+
+function fecharMenu() {
+  document.getElementById("menuMobile").style.width = "0";
+}

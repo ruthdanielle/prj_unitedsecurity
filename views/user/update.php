@@ -27,43 +27,45 @@ endif;
 <form class="cadastro" action="<?= url("usuario/area/atualizar") ?>" method="POST">
     <fieldset id="attField">
         <p>Atualização cadastral</p>
-
-        <fieldset class="img_log centraliza">
+		<div class="justify">
+        <fieldset class="img_log">
             <legend>Preencha o formulario</legend>
+			<div class="atualizar-justify">
+				<label for="telAtt">Telefone:</label>
+				<input type="tel" id="telAtt" name="telAtt" placeholder="Somente Numeros" maxlength="14"  /><br>
+			</div>
+			<div class="atualizar-justify">
+				<label for="passwordAtt">Senha Atual<b>*</b>:</label>
+				<input type="password" id="passwordAtt" name="passwordAtt" placeholder="Digite sua senha" required />
+			</div>
+			<div class="atualizar-justify">
+				<label for="passwordAtt2">Nova Senha<b>*</b>:</label>
+				<input type="password" id="passwordAtt1" name="passwordAtt1" placeholder="Digite a nova senha" required />
+			</div>
+			<div class="atualizar-justify">
+				<label for="passwordAtt2"> Repetir Senha<b>*</b>:</label>
+				<input type="password" id="passwordAtt2" name="passwordAtt2" placeholder="Repita a nova senha" required /><br>
+			</div>
+            	<input type="submit" value="Atualizar" id="atualizar" name="atualizar" class="entrar">
 
-            <label for="telAtt">Telefone:</label>
-            <input type="tel" id="telAtt" name="telAtt" placeholder="Somente Numeros" maxlength="14"  /><br>
-
-            <label for="passwordAtt">Senha Atual<b>*</b>:</label>
-            <input type="password" id="passwordAtt" name="passwordAtt" placeholder="Digite sua senha" required />
-
-            <label for="passwordAtt2">Nova Senha<b>*</b>:</label>
-            <input type="password" id="passwordAtt1" name="passwordAtt1" placeholder="Digite a nova senha" required />
-
-            <label for="passwordAtt2"> Repetir Senha<b>*</b>:</label>
-            <input type="password" id="passwordAtt2" name="passwordAtt2" placeholder="Repita a nova senha" required /><br>
-
-            <input type="submit" value="Atualizar" id="atualizar" name="atualizar">
-
-        </fieldset><br>
-
-        <div class="linkancora centraliza">
-            <?php
-                if ($_SESSION['usuario']->tipo) :?>
+        </fieldset>
+		</div>
+        <div class="alinhado">
+          <?php 
+                if ($_SESSION['usuario']->tipo) :?> 
                     
                     <h3><a href="<?= url('admin/area') ?>">Voltar</a></h3>
        
         <?php   else :?>
-
                     <h3><a href="<?= url('usuario/area/servicos') ?>">Gerenciar serviços</a></h3>
-        <?php   endif; ?>
+	
+         <?php   endif; ?> 
             
         </div>
 
     </fieldset>
 </form>
 
-<pre>
 
 <?php
 //chamada de rodapé

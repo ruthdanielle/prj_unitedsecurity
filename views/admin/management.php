@@ -14,7 +14,7 @@ require_once __DIR__ . '/../include/header.php';
 
         switch ($alert):
             case 'adminSuccess': ?>
-                <h2>Bem vindo <?= $_SESSION['usuario']->nome ?></h2>
+                <h2>Bem-vindo <?= $_SESSION['usuario']->nome ?></h2>
             <?php break;
             case 'success': ?>
                 <h2>Dados atualizados com sucesso</h2>
@@ -74,9 +74,9 @@ require_once __DIR__ . '/../include/header.php';
 
 </section>
 
-<div class="linkancora">
+<div class="alinhado margem">
     <h3><a href="<?= url('usuario/area') ?>">Dados pessoais</a></h3>
-    <h3><a href="<?= url('admin/area/promover') ?>">promover usuario</a></h3>
+    <h3><a href="<?= url('admin/area/promover') ?>">Promover usuario</a></h3>
 </div>
 
 <?php
