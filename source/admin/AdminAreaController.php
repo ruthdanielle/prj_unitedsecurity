@@ -29,7 +29,7 @@ class AdminAreaController
     {
         $contact = new ContactDao();
         $result = $contact->list();
-        $title = 'GERENCIAR | ';
+        $title = 'Gerenciar | ';
         require __DIR__ . "/../../views/admin/management.php";
     }
     public function adminAreaPost($data)
@@ -44,7 +44,7 @@ class AdminAreaController
     // Rota para promover conta
     public function adminPromoter($data)
     {
-        $title = 'ALTERAR CONTA | ';
+        $title = 'Promover | ';
 
         //Validações para buscar na tabela de usuarios
         if (isset($_GET['buscar'])) {

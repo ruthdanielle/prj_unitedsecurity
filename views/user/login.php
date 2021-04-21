@@ -3,9 +3,12 @@
 require_once __DIR__ . '/../include/header.php';
 ?>
 
+
+<h1 class='titulo'>Login</h1>
+<div class="conteudo">
 <form id="LogIn" action="<?= url("usuario/entrar") ?>" method="POST">
 
-    <h1 class='titulo'>Login</h1>
+    
 
     <?php
     // calbacks 
@@ -27,21 +30,24 @@ require_once __DIR__ . '/../include/header.php';
     <fieldset class="contatos">
         <img id="logologin" src="<?= url("views/app/src/logo.png") ?>" alt="United Security©">
         <p>Use sua conta United</p>
-
-        <label for="username">Email<b>*</b>:</label>
-        <input type="text" id="email" name="email" placeholder="Digite seu apelido" required />
-        <br>
-
-        <label for="password">Senha<b>*</b>:</label>
-        <input type="password" id="password" name="password" placeholder="Digite sua Senha" required><br>
-        <input type="submit" value="Login" id="logar" name="logar">
-
-
-        <a id="aCadastro" href="<?= url('usuario/cadastrar') ?>">Cadastre-se!</a>
+		<div class="justify">
+			<label for="username">Email<b>*</b>:</label>
+			<input type="text" id="email" name="email" placeholder="Digite seu apelido" required />
+			<br>
+		</div>
+		
+		<div class="justify">
+			<label for="password">Senha<b>*</b>:</label>
+			<input type="password" id="password" name="password" placeholder="Digite sua Senha" required><br>
+		</div>
+		<div class="alinhado">
+			<a id="aCadastro" href="<?= url('usuario/cadastrar') ?>">Cadastre-se!</a>
+			<input type="submit" value="Login" id="logar" class="entrar" name="logar">
+		</div>
     </fieldset>
 
 </form>
-
+</div>
 <?php
 //chamada de rodapé
 require_once __DIR__ . '/../include/footer.php';

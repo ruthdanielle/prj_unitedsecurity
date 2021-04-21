@@ -31,9 +31,9 @@ class UserAreaController
     {
         //verifica quem esta tratando dados Usuario comun ou administrador e seta o titulo para cada situação.
         if (isset($this->user) && ($this->user->tipo == true)) {
-            $title = 'GERENCIAR | ';
+            $title = 'Gerenciar | ';
         } else {
-            $title = 'MINHA AREA | ';
+            $title = 'Minha Área | ';
         }
 
 
@@ -44,7 +44,7 @@ class UserAreaController
     public function userUpdate($data)
     {
 
-        $title = 'ATUALIZAR | ';
+        $title = 'Atualizar | ';
         require __DIR__ . "/../../views/user/update.php";
 
         if (isset($_POST['atualizar'])) {
@@ -91,7 +91,7 @@ class UserAreaController
             $list = new ServicoContratadoDao();
         $userServices = $list->list($this->user->Id);
 
-        $title = 'SERVIÇOS | ';
+        $title = 'Serviços | ';
         require __DIR__ . "/../../views/user/management.php";
         
         }else {
