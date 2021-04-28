@@ -9,7 +9,7 @@ class ServicesController
 {
     // Rota referente a serviços
     public function services($data){
-        $title = 'SERVIÇOS | ';
+        $title = 'Serviços | ';
         
         $services = new servicesDao();
         $service = $services->listar();

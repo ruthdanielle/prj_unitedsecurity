@@ -47,17 +47,20 @@ class Connect
         return self::$error;
     }
 
-    /**
-     * Connect constructor.
-     */
-    final private function __construct()
-    {
-    }
+    
 
     /**
      * Connect clone.
      */
-    final private function __clone()
+     private function __clone()
+    {
+    }
+
+
+    /**
+     * Connect constructor.
+     */
+    final private function __construct()
     {
     }
 }

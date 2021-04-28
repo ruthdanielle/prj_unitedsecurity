@@ -8,13 +8,13 @@ class webController
 {
     //home
     public function home($data){
-        $title = 'HOME | ';
+        $title = 'Home | ';
         require __DIR__ . "/../../views/home.php";
     }
 
     //Rota referente a pagina sobre nós.
     public function aboutUs(){
-        $title = 'SOBRE | ';
+        $title = 'Sobre | ';
         require __DIR__ . "/../../views/about.php";
     }
 

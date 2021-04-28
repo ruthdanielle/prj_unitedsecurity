@@ -220,6 +220,14 @@ h2{
     font-family: 'Montserrat', sans-serif;
 }
 
+.resolvido{
+    background-color:#3cec9ab2;
+    text-align:  center !important;
+    font-family: 'Verdana';
+    
+
+}
+
 h3{
     text-align: center;
     color: rgb(2, 53, 118); 
@@ -429,6 +437,9 @@ fieldset p{
 	margin: 0 11.590rem
 }
 
+.margem-top{
+    margin-top: 1.650rem;
+}
 .justify{
 	display: flex;
 	justify-content: center;
@@ -664,7 +675,7 @@ footer h5{
 	}
 	
 	#contato{
-		width: 100% !important;
+		width: 80% !important;
 		margin: 0 auto;
 	}
 	
@@ -751,13 +762,14 @@ footer h5{
 }
 	
 	.dados p {
-    width: 75% !important;
+    width: 87% !important;
 	text-align: left;
 	font-size: 0.97rem
 }
 	
 	#attField {
      width: 80%; 
+     margin-left: 5% !important;
       
 }
 	.dados{
@@ -770,8 +782,61 @@ footer h5{
 		width: 80%;
 	
 	}
+
+    
+    .busca-promotor{
+
+        margin-top: 1.650rem !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    fieldset{
+        margin-left: 0% !important;
+    }
+
+    
+.fundo-erro{
+    background-color: transparent;
+    width: 80% !important;
+    height: 80% !important;
+    margin-top: 30% !important;
+    border-radius: 10px;
+}
 	
 }
+
+.busca-promotor{
+
+    margin-left: 6.5rem;
+    margin-right: 6.5rem;
+}
+
+.busca-promotor input{
+    padding: 0.22rem;
+    font-size: 13.3333px;
+}
+
+.busca-promotor select{
+    font-size: 13.3333px; 
+}
+
+.busca-promotor label{
+    font-size: 14px;
+    color: #000;
+    
+}
+
+.busca-promotor button{
+    font-family: 'Verdana';
+    
+    font-size: 14px;
+    
+    border: 1px 1px;
+    margin: 0;
+    line-height: 1.4rem;
+}
+
 
 
 @media only screen and (max-width: 360px){
@@ -790,4 +855,49 @@ footer h5{
     font-family: 'Verdana';
     font-size: 13px !important;
 	border-radius: 5px
+}
+
+.background-erro{
+    background-image: linear-gradient(120deg, rgb(156, 157, 226), rgb(240, 240, 240)) !important;
+    background-size: contain;
+    background-position-x: center;
+    display: flex;
+    justify-content: center;
+}
+
+.background-erro h1{
+    color: rgb(156, 6, 6);
+    text-shadow: 3px 3px 3px #ff810afb;
+    font-size: 112px;
+    margin: 0;
+}
+
+.botao-erro{
+    display: inline-block;
+    font-weight: 600;
+    font-family: 'Verdana';
+    color: #eef0f1;
+    text-align: center;
+    vertical-align: middle;
+    background-color: #20589f;
+    border: 1px solid transparent;
+    padding: .45rem .9rem;
+    font-size: .9rem;
+    line-height: 1.5;
+    border-radius: .15rem;
+    text-decoration: none;
+}
+
+.background-erro h2{
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    
+}
+
+.fundo-erro{
+    background-color: transparent;
+    width: 50%;
+    height: 50%;
+    margin-top: 10%;
+    border-radius: 10px;
 }

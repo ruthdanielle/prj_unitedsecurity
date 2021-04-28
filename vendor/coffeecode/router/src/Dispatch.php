@@ -264,3 +264,5 @@ abstract class Dispatch
         return (!is_string($handler) ?: (explode($this->separator, $handler)[1] ?? null));
     }
 }
+
+?>

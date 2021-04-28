@@ -12,14 +12,14 @@ class ContactController
     // Rota pagina Contato 
     public function contact($data)
     {
-        $title = 'CONTATO | ';
+        $title = 'Contato | ';
         require __DIR__ . "/../../views/contact.php";
     }
 
     //Rota POST para contatos variavel $data contem um array com os dados do formulario
     public function contactPost($data)
     {
-        $title = 'CONTATO | ';
+        $title = 'Contato | ';
 
         // Verifica se o botão foi pressionado e instancia a classe de contato e registra o contato
         if ($_POST['contato']) {
