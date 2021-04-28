@@ -16,10 +16,10 @@ if (isset($data['registeralert'])) :
             <h4 class='erro'>Email já cadastrado</h4>
         <?php break;
         case 'cpferror': ?>
-            <h4 class='erro'>Cpf já cadastrado</h4>
+            <h4 class='erro'>CPF já cadastrado</h4>
         <?php break;
         case 'interror': ?>
-            <h4 class='erro'>Prencha apenas numeros nos campos CPF e TELEFONE</h4>
+            <h4 class='erro'>Prencha apenas números nos campos CPF e TELEFONE</h4>
         <?php break;
     endswitch;
 endif;
@@ -30,7 +30,7 @@ endif;
     <fieldset>
 
         <br>
-        <p class="cadastroTitulo">Preencha o Formulário a seguir</p><br>
+        <p class="cadastroTitulo">Preencha o formulário a seguir</p><br>
 
 
         <fieldset id="img_pessoal">
@@ -50,7 +50,7 @@ endif;
         </fieldset>
 
         <fieldset class="img_log">
-            <legend>Dados para Login</legend>
+            <legend>Dados para login</legend>
 
             <label for="nick">E-mail<b>*</b>:</label>
             <input type="email" id="email" name="email" placeholder="Digite seu email" required />

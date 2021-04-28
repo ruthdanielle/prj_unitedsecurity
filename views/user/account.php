@@ -39,7 +39,7 @@ require_once __DIR__ . '/../include/header.php';
             <p>Última atualização em:
                 <?= date('d/m/Y H:i', strtotime($_SESSION['usuario']->dtAtt)) ?></p>
             <p>Tipo de conta:
-                <?= $_SESSION['usuario']->tipo ? 'Administrador(a)' : 'Standard' ?></p>
+                <?= $_SESSION['usuario']->tipo ? 'Administrador(a)' : 'Padrão' ?></p>
         </div>
 
     <?php else : ?>

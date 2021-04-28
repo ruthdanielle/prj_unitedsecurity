@@ -1,4 +1,5 @@
 <?php
+ob_start();
 //chamada de cabeçalho
 require_once __DIR__ . '/../include/header.php';
 ?>
@@ -6,7 +7,7 @@ require_once __DIR__ . '/../include/header.php';
 
 <h1 class='titulo'>Login</h1>
 <div class="conteudo">
-<form id="LogIn" action="<?= url("usuario/entrar") ?>" method="POST">
+<form id="LogIn" action="<?= url("usuario/entrar");?>" method="POST">
 
     
 
@@ -28,7 +29,7 @@ require_once __DIR__ . '/../include/header.php';
     ?>
 
     <fieldset class="contatos">
-        <img id="logologin" src="<?= url("views/app/src/logo.png") ?>" alt="United Security©">
+        <img id="logologin" src="<?=url('views/app/src/logo.png')?>" alt="United Security©">
         <p>Use sua conta United</p>
 		<div class="justify">
 			<label for="username">Email<b>*</b>:</label>
@@ -41,7 +42,7 @@ require_once __DIR__ . '/../include/header.php';
 			<input type="password" id="password" name="password" placeholder="Digite sua Senha" required><br>
 		</div>
 		<div class="alinhado">
-			<a id="aCadastro" href="<?= url('usuario/cadastrar') ?>">Cadastre-se!</a>
+			<a id="aCadastro" href="<?=url('usuario/cadastrar')?>">Cadastre-se!</a>
 			<input type="submit" value="Login" id="logar" class="entrar" name="logar">
 		</div>
     </fieldset>
@@ -51,4 +52,6 @@ require_once __DIR__ . '/../include/header.php';
 <?php
 //chamada de rodapé
 require_once __DIR__ . '/../include/footer.php';
+
+
 ?>

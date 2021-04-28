@@ -4,6 +4,8 @@ require_once __DIR__ . '/../include/header.php';
 ?>
 <h1>Promover</h1>
 
+<div class="dados-fundo">
+
 <!-- Formulario de busca -->
 <form action="<?= url("admin/area/promover") ?>" method="get">
 
@@ -16,39 +18,43 @@ require_once __DIR__ . '/../include/header.php';
         $alert = base64_decode($data['promoteralert']);
         switch ($alert):
             case 'invalidemail': ?>
-                <H3 class="erro">Email invalido</H3>
+                <h3 class="erro">E-mail inválido</h3>
             <?php break;
             case 'NaN': ?>
-                <H3 class="erro">Em CPF digite apenas numeros</H3>
+                <h3 class="erro">Digite apenas números para CPF</h3>
             <?php break;
             case 'noresult': ?>
-                <H3 class="erro">Não foram encontrados registros</H3>
+                <h3 class="erro">Não foram encontrados registros</h3>
             <?php break;
 
             case 'upfail': ?>
-                <H3 class="erro">Não foi possivel alterar</H3>
+                <h3 class="erro">Não foi possível alterar</h3>
             <?php break;
             case 'upsuccess': ?>
-                <H3>Conta alterada com sucesso</H3>
+                <h3>Conta alterada com sucesso</h3>
     <?php break;
 
         endswitch;
     endif;
     ?>
 
+<div class="busca-promotor">
 
+    
     <label for="buscarpor">Buscar por:</label>
-
+    
     <select name="buscarpor" id="buscarpor">
-        <option value="email">EMAIL</option>
+        <option value="email">E-MAIL</option>
         <option value="cpf">CPF</option>
 
     </select>
-
-    <input type="text" placeholder="digite para buscar" name="busca" id="busca" required>
+    
+    <input type="text" placeholder="Digite para buscar" name="busca" id="busca" required>
 
     <button type="submit" name="buscar">Pesquisar</button>
 
+    
+</div>
 </form>
 
 <!-- Formulario de alteraçao de tipo de conta -->
@@ -64,32 +70,36 @@ require_once __DIR__ . '/../include/header.php';
                 <br>
                 <div id="bloco">
 
-                    <p>Codigo:<?= $line->Id ?> </p>
-                    <p> Nome: <?= $line->nome ?><br>
-                        Cpf: <?= $line->cpf ?><br>
-                        telefone: <?= $line->telefone ?><br>
-                        email: <?= $line->email ?><br>
-                        tipo: <?= $line->tipo ? "Administrador" : "Standard" ?><br><br>
+                    <p>Código:<?= $line->Id ?> </p>
+                    <p>Nome: <?= $line->nome ?></p>
+                    <p>CPF: <?= $line->cpf ?></p>
+                    <p>Telefone: <?= $line->telefone ?></p>
+                    <p>E-mail: <?= $line->email ?></p>
+                    <p>Tipo: <?= $line->tipo ? "Administrador" : "Padrão" ?></p>
 
-                        <input type="radio" name="select" id="select" value="<?= $line->Id ?>">
-                    </p>
+                    <p> <input type="radio" name="select" id="select" value="<?= $line->Id ?>">  </p>
+                   
                 </div>
-                <br>
+                
 
             <?php endforeach; ?>
-
-            <select name="promo" id="promo">
-                <option value="1">Admin</option>
-                <option value="null">Standard</option>
-            </select>
-            <button type="submit">Atualizar</button>
+            <div class="margem-top busca-promotor">
+                <select name="promo" id="promo">
+                    <option value="1">Administrador</option>
+                    <option value="null">Padrão</option>
+                </select>
+            
+            <button type="submit" class='entrar'>Atualizar</button>
+            </div>
         <?php endif; ?>
     
     </form>
 </div>
 
-<div class="linkancora">
+<div style="margin-top: 2rem">
     <h3><a href="<?= url('admin/area') ?>">Voltar</a></h3>
+</div>
+
 </div>
 <?php
 //chamada de rodapé
