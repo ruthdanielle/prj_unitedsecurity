@@ -42,8 +42,6 @@ class UserDao extends DataLayer
         // Inserção e retorna mensagem para o controlador UserController:register
         if ($error) {
             return $alert = base64_encode('connecterror');
-        } elseif (!(is_numeric($user->getCpf())) || !(is_numeric($user->getTelefone()))) {
-            return $alert = base64_encode('interror');
         } else {
             $valida = $this->valida($user->getEmail(), $user->getCpf());
             if ($valida['email'] && $valida['cpf']) {

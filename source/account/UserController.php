@@ -66,9 +66,15 @@ class UserController
 
         //verifica se a variavel esta setada e instancia um usuario com os dados contidos no array e o resgistra.
         if (isset($_POST['cadastrar'])) {
-            $user = new User($data);
-            $register = new UserDao();
-            $alert = $register->register($user);
+            if ((is_numeric($data['cpf'])) && (is_numeric($data['tel']))) {
+
+                $user = new User($data);
+                $register = new UserDao();
+                $alert = $register->register($user);
+            } else {
+                $alert = base64_encode('interror');
+                $this->router->redirect("/usuario/cadastrar/$alert");  
+            }
         }
 
         //verifica se teve um retorno do registro e o redireciona para cada situação.

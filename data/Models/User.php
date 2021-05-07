@@ -14,8 +14,8 @@ class User
     public function __construct(array $data)
     {
         $this->nome = $this->clear(filter_var($data['name'], FILTER_SANITIZE_STRING));
-        $this->cpf = $this->clear(filter_var($data['cpf'], FILTER_SANITIZE_NUMBER_INT));
-        $this->telefone = $this->clear(filter_var($data['tel'], FILTER_SANITIZE_NUMBER_INT));
+        $this->cpf = strval($this->clear(filter_var($data['cpf'], FILTER_SANITIZE_NUMBER_INT)));
+        $this->telefone = strval($this->clear(filter_var($data['tel'], FILTER_SANITIZE_NUMBER_INT)));
         $this->email = $this->clear(filter_var($data['email'], FILTER_VALIDATE_EMAIL));
         $this->senha = password_hash($data['password'], PASSWORD_DEFAULT);
     }

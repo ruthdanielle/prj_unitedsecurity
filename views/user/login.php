@@ -12,7 +12,7 @@ require_once __DIR__ . '/../include/header.php';
     
 
     <?php
-    // calbacks 
+    // Area de alerta
     if (isset($data['loginalert'])) :
 
         $alert = base64_decode($data['loginalert']);

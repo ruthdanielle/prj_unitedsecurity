@@ -59,7 +59,7 @@ class AdminAreaController
                 }
             } else {
 
-                $find = htmlspecialchars(filter_input(INPUT_GET, 'busca', FILTER_SANITIZE_EMAIL)); 
+                $find = htmlspecialchars(filter_input(INPUT_GET, 'busca', FILTER_SANITIZE_EMAIL));
                 if (!$find || \is_numeric($find)) {
                     $alert = base64_encode("invalidemail");
                     $this->router->redirect("/admin/area/promover/{$alert}");
@@ -80,10 +80,15 @@ class AdminAreaController
     }
     public function adminPromoterPost($data)
     {
-        $upgrade = new UserDao();
-        $alert = $upgrade->upgrade($data);
-        if ($alert) {
+        $alert = base64_encode('selecione');
+        if (isset($data['select']) && ($data['select'] !== [])) {
+            $upgrade = new UserDao();
+            $alert = $upgrade->upgrade($data);
+            if ($alert) {
 
+                $this->router->redirect("/admin/area/promover/{$alert}");
+            }
+        } else {
             $this->router->redirect("/admin/area/promover/{$alert}");
         }
     }

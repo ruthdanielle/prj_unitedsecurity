@@ -7,7 +7,7 @@ require_once __DIR__ . '/../include/header.php';
     <h1 class="titulo">Dados Pessoais </h1>;
 
     <?php
-    // calbacks 
+    // Area de alerta
     if (isset($data['areaalert'])) :
 
         $alert = base64_decode($data['areaalert']);

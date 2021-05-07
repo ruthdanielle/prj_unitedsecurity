@@ -32,7 +32,10 @@ require_once __DIR__ . '/../include/header.php';
             <?php break;
             case 'upsuccess': ?>
                 <h3>Conta alterada com sucesso</h3>
-    <?php break;
+            <?php break;
+            case 'selecione': ?>
+                <H3>Selecione uma conta para altera-la</H3>
+            <?php break;
 
         endswitch;
     endif;
