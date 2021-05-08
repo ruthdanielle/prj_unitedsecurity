@@ -7,16 +7,32 @@ use Data\Models\Contact;
 use Data\Models\Dao\ContactDao;
 
 session_start();
+
+/**
+ * Classe do tipo Controller.
+ * ContactController gerencia as requisições da rota de contatos. 
+ */
 class ContactController
 {
-    // Rota pagina Contato 
+    /**
+     * Rota pagina Contato.
+     * Rota do tipo GET, responsavel por renderizar a pagina de contatos.
+     * @param array $data.
+     * Variavel padrão para recebimento de dados das requisições. 
+     */
     public function contact($data)
     {
         $title = 'Contato | ';
         require __DIR__ . "/../../views/contact.php";
     }
 
-    //Rota POST para contatos variavel $data contem um array com os dados do formulario
+    /**
+     * Rota para contatos.
+     * Rota do tipo POST, responsavel por inserir um novo contato no banco de dados.
+     * @param array $data.
+     * Variavel padrão para recebimento de dados das requisições. 
+     */
+
     public function contactPost($data)
     {
         $title = 'Contato | ';

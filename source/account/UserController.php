@@ -8,6 +8,10 @@ use Data\Models\User;
 
 session_start();
 
+/**
+ * Classe do tipo Controller.
+ * UserController gerencia as requisições da rota usuarios. 
+ */
 class UserController
 {
     public $router;
@@ -17,7 +21,12 @@ class UserController
         $this->router = new Router(URL_BASE);
     }
 
-    //Rota POST /entrar armazenando dados do formulario em $data 
+    /**
+     * Rota para login (/entrar).
+     * Rota do tipo POST, responsavel por processar o formulario de entrada e redirecionar o usuario.
+     * @param array $data.
+     * Variavel padrão para recebimento de dados das requisições. 
+     */
     public function login($data)
     {
 
@@ -50,7 +59,13 @@ class UserController
     }
 
 
-    //Rota que destroi a sessão atual e redireciona para home
+
+    /**
+     * Rota para sair.
+     * Rota do tipo GET, responsavel por destroir a sessão atual e redireciona o usuario para home.
+     * @param array $data.
+     * Variavel padrão para recebimento de dados das requisições. 
+     */
     public function logOut($data)
     {
         session_unset();
@@ -58,7 +73,12 @@ class UserController
         $this->router->redirect("/home");
     }
 
-    // Rota POST /usuario/cadastrar variavel $data contem itens formulario cadastro em array
+    /**
+     * Rota para Cadastrar usuario.
+     * Rota do tipo POST, responsavel por cadastrar novos usuarios.
+     * @param array $data.
+     * Variavel padrão para recebimento de dados das requisições. 
+     */
     public function register($data)
     {
         // Definindo titulo da pagina

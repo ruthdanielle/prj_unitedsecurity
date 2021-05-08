@@ -2,7 +2,10 @@
 
 namespace Data\Models;
 
-// Classe para tratatamento de serviços
+/**
+ * Classe Services.
+ * Classe para transporte, tratatamento de dados de serviços 
+ */
 class Services
 {
     private $nome;

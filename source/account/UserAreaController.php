@@ -8,13 +8,19 @@ use Data\Models\Dao\UserDao;
 
 session_start();
 
+/**
+ * Classe do tipo Controller.
+ * UserAreaController gerencia as requisições da rota de area de usuarios. 
+ */
 class UserAreaController
 {
 
     private $user;
     private $router;
 
-    //Construtor verifica se o usuario autenticado é um usuario comun ou um administrador.
+    /**
+     * Construtor verifica se o usuario autenticado é um usuario comun ou um administrador.
+     */
     public function __construct()
     {
         $this->router = new Router(URL_BASE);
@@ -26,7 +32,12 @@ class UserAreaController
         }
     }
 
-    //Rota da area do usuario tambem pode ser acessada para o administrador tratar dados pessoais.
+    /**
+     * Rota para area do usuario.
+     * Rota do tipo GET, responsavel por renderizar area do usuario.
+     * @param array $data.
+     * Variavel padrão para recebimento de dados das requisições. 
+     */
     public function userArea($data)
     {
         //verifica quem esta tratando dados Usuario comun ou administrador e seta o titulo para cada situação.
@@ -40,7 +51,12 @@ class UserAreaController
         require __DIR__ . "/../../views/user/account.php";
     }
 
-    //Rota de atualização cadastral.
+    /**
+     * Rota para atualizar dados do usuario.
+     * Rota  responsavel por atualizar dados cadastrais.
+     * @param array $data.
+     * Variavel padrão para recebimento de dados das requisições. 
+     */
     public function userUpdate($data)
     {
 
@@ -83,8 +99,12 @@ class UserAreaController
         }
     }
 
-    //Rota para gestão de serviços (contratação e cancelamentos).
-    //ROTA GET mostra o conteudo da pagina
+    /**
+     * Rota para gerenciar seriviços.
+     * Rota do tipo GET, responsavel por renderizar o conteudo da pagina.
+     * @param array $data.
+     * Variavel padrão para recebimento de dados das requisições. 
+     */
     public function userServices($data)
     {
         if (!$this->user->tipo) {
@@ -99,7 +119,13 @@ class UserAreaController
         }
         
     }
-    //ROTA POST PROCESSA E REDIRECIONA OS FORMULARIOS
+    
+    /**
+     * Rota para atualizar contratação e cancelamento de serviços.
+     * Rota do tipo POST, responsavel por processar o formulario e redirecionar a resposta.
+     * @param array $data.
+     * Variavel padrão para recebimento de dados das requisições. 
+     */
     public function userServicesPost($data)
     {
 

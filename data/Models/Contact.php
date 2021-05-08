@@ -2,7 +2,10 @@
 
 namespace Data\Models;
 
-// Classe para tratatamento de contatos
+/**
+ * Classe Contact.
+ * Classe para transporte, tratatamento de dados de contatos 
+ */
 class Contact
 {
     private $nome;

@@ -4,9 +4,15 @@ namespace Data\Models\Dao;
 
 use CoffeeCode\DataLayer\Connect;
 use CoffeeCode\DataLayer\DataLayer;
-
+/**
+ * Classe ServicoContratadoDao
+ * Responsavel por persistir os dados de serviços contratados em banco de dados.
+ */
 class ServicoContratadoDao extends DataLayer
 {
+    /**
+     * Abstração da tabela Cadastro para uso do Datalayer utilizado para persistir os dados.
+     */
     public function __construct()
     {
         parent::__construct(
@@ -21,7 +27,11 @@ class ServicoContratadoDao extends DataLayer
         );
     }
 
-    //LISTA OS SERVIÇOS DO USUARIO
+    /**
+     * Recupera os dados do usuario com base em seu id.
+     * @param int $id
+     * @return array Collection
+     */
     public function list($id)
     {
 
@@ -29,7 +39,13 @@ class ServicoContratadoDao extends DataLayer
         return $user;
     }
 
-    //ATIVA SERVIÇOS
+    /**
+     * ATIVA SERVIÇOS.
+     * Ativa o serviço selecionado por um usuario
+     * @param int $id
+     * @param array $data contento iformaçao do serviço selecionado no indice $data['servico']
+     * @return string
+     */
     public function activate($id, $data)
     {
         $conn = Connect::getInstance();
@@ -53,7 +69,13 @@ class ServicoContratadoDao extends DataLayer
         }
     }
 
-    //CANCELA SERVIÇOS
+    /**
+     * CANCELA SERVIÇOS.
+     * Cancela o serviço selecionado por um usuario
+     * @param int $id
+     * @param array $data contento iformaçao do serviço selecionado no indice $data['servico']
+     * @return string
+     */
     public function cancel($id, $data)
     {
         $conn = Connect::getInstance();

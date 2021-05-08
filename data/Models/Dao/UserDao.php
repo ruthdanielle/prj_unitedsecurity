@@ -8,10 +8,15 @@ use CoffeeCode\DataLayer\Connect;
 use CoffeeCode\DataLayer\DataLayer;
 use Data\Models\User;
 
-
+/**
+ * Classe UserDao
+ * Responsavel por persistir os dados de usuarios em banco de dados.
+ */
 class UserDao extends DataLayer
 {
-    //Abstração da tabela Cadastro para uso do Datalayer
+     /**
+     * Abstração da tabela Cadastro para uso do Datalayer utilizado para persistir os dados.
+     */
     public function __construct()
     {
         parent::__construct(
@@ -31,7 +36,12 @@ class UserDao extends DataLayer
         );
     }
 
-    // inserção de usuarios na tabela Cadastro
+
+    /**
+     * inserção de usuarios na tabela Cadastro.
+     * @param object $user objeto da classe User
+     * @return string
+     */
     public function register(User $user)
     {
         // Chamada de conexão com o banco e erros
@@ -64,10 +74,20 @@ class UserDao extends DataLayer
         }
     }
 
-    //verificação de CPF e Email existente no banco
+    /**
+     * valida.
+     * verifica se o CPF e Email existente no banco de dados
+     * @param string $valEmail
+     * @param string $valCpf
+     */
+
     public function valida($valEmail, $valCpf): array
     {
-        //lista todos os valores encontrados no banco
+        /**
+         * $list
+         * lista todos os valores encontrados no banco de dados.
+         * @var array
+         */
         $list = $this->find()->fetch(true);
         foreach ($list as $value) {
             $cpf[] =  $value->cpf;
@@ -89,13 +109,25 @@ class UserDao extends DataLayer
         return $valida;
     }
 
+    /**
+     * clear.
+     * Helper de sanitização.
+     * @param string $input
+     * @return string
+     */
     public function clear($input)
     {
         $item =  htmlspecialchars($input);
         return $item;
     }
 
-    // Checa se os dados para login confirmam e cria uma Sessão 
+    // 
+    /**
+     * login.
+     * Checa se os dados para login, autentica e cria uma Sessão
+     * @param array $data contendo $data['email'] e $data['password']
+     * @return string
+     */   
     public function login($data)
     {
         //verifica se o email e senha que vieram do front estão setados e os armazena
@@ -132,6 +164,13 @@ class UserDao extends DataLayer
     }
 
     //UPDATE DE USUARIOS
+    /**
+     * att.
+     * Atualiza dados de usuarios.
+     * @param int $id
+     * @param array $data contendo dados do formulario.
+     * @return string
+     */
     public function att($id, $data)
     {
         //tratamento variaveis do front-end
@@ -184,7 +223,13 @@ class UserDao extends DataLayer
         }
     }
 
-    //Busca usuarios cadastrados por CPF ou email
+    /**
+     * Metodo search.
+     * Busca usuarios cadastrados por CPF ou email
+     * @param mixed $value
+     * @param string $type
+     * @return array
+     */
     public function search($type, $value)
     {
 
@@ -198,14 +243,20 @@ class UserDao extends DataLayer
             foreach ($user as $item) {
                 $data[] = $item->data();
             }
-        } else {
-            return base64_encode('noresult');
         }
 
         return isset($data) ? $data : [];
     }
 
-    //Atualiza tipo de conta do usuario
+    //
+    /**
+     * Metodo upgrade.
+     * Atualiza tipo de conta do usuario
+     * @param array $data 
+     * $data['select'] possui id do usuario.
+     * $data['promo'] possui o tipo selecionado à ser promovido
+     * @return string
+     */
     public function upgrade($data){
         $id = $data['select'];
         $type = $data['promo'];
@@ -214,10 +265,8 @@ class UserDao extends DataLayer
         $user[0]->tipo = $type;
         if ($user[0]->save()) {
             return base64_encode('upsuccess');
-        }else {
-            return base64_encode('upfail');
         }
-        return $user;
+            return base64_encode('upfail');
         
     }
 }

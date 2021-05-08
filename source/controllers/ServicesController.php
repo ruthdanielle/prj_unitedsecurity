@@ -5,9 +5,18 @@ namespace Source\controllers;
 use Data\Models\Dao\servicesDao;
 
 session_start();
+/**
+ * Classe do tipo Controller.
+ * ServicesController gerencia as requisições da rota de serviços. 
+ */
 class ServicesController
 {
-    // Rota referente a serviços
+    /**
+     * Rota referente a serviços.
+     * Os dados que chegam por requisições ficam retidos em um array $data
+     * @param array $data
+     * 
+     */
     public function services($data){
         $title = 'Serviços | ';
         

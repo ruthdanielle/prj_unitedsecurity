@@ -6,11 +6,18 @@ use CoffeeCode\DataLayer\Connect;
 use CoffeeCode\DataLayer\DataLayer;
 use Data\Models\Contact;
 
+/**
+ * Classe ContactDao
+ * responsavel por persistir contatos em banco de dados.
+ * @author Alan Nonato 
+ */
 class ContactDao extends DataLayer
 {
+    /**
+     * Abstração da tabela Cadastro para uso do Datalayer utilizado para persistir os dados.
+     */
     public function __construct()
     {
-        //Abstração da tabela Cadastro para uso do Datalayer
         parent::__construct(
             "contato",
             [
@@ -24,16 +31,26 @@ class ContactDao extends DataLayer
         );
     }
 
-    // inserção do contato no banco de dados
+    /**
+     * Inserção do contato no banco de dados.
+     * Metodo recebe um objeto da classe Contact como parametro
+     * e devolve uma string em resposta.
+     * @param  object $data
+     * @return string $alert
+     */
     public function register(Contact $data)
     {
 
-        // Chamada de conexão com o banco e erros
+        /**
+         * $conn
+         * Chamada de conexão com o banco e erros
+         * @var PDO
+         */ 
         $conn = Connect::getInstance();
         $error = Connect::getError();
 
         // Verifica se existe erro de conexão e retorna
-        // Registra os dados em banco e retorna mensagem para UserController:login
+        // Registra os dados em banco e retorna mensagem
         if ($error) {
             $alert = base64_encode('connecterror');
             return $alert;
@@ -53,6 +70,10 @@ class ContactDao extends DataLayer
         }
     }
 
+    /**
+     * Lista os contatos existentes.
+     * @return array
+     */
     public function list()
     {
         $contacts = $this->find()->order("dtContato ASC")->order("situacao ASC")->fetch(true);
@@ -65,7 +86,16 @@ class ContactDao extends DataLayer
         return [];
     }
 
+    /**
+     * Metodo marca o contato como resolvidos
+     * @param array $id['idContato']
+     */
     public function done($id){
+        /**
+         * $id
+         * Recupera o id passado via parametro.
+         * @var int
+         */
         $id = $id['idContato'];
         $done = $this->find("Id = :cid", "cid={$id}")->fetch(true);
         $done[0]->situacao = true;

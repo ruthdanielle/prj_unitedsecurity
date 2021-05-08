@@ -2,7 +2,10 @@
 
 namespace Data\Models;
 
-// Classe para tratatamento de usuarios
+/**
+ * Classe User.
+ * Classe para transporte, tratatamento de dados de usuarios 
+ */
 class User
 {
     private   $nome;
