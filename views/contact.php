@@ -8,6 +8,7 @@
     <H1 class="titulo">CONTATO</H1>
        
         <?php
+        // Area de alerta
         if (isset($data['contactalert'])):
             $alert = base64_decode($data['contactalert']);
             if ($alert == 'sucesso'):?>

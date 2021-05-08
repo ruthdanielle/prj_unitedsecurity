@@ -7,12 +7,19 @@ use Data\Models\Dao\ContactDao;
 use Data\Models\Dao\UserDao;
 
 session_start();
+
+/**
+ * Classe do tipo Controller.
+ * AdminAreaController gerencia as requisições da rota de administradores. 
+ */
 class AdminAreaController
 {
     private $admin;
     private $router;
 
-    //Construtor verifica se o usuario autenticado é um usuario comun ou um administrador.
+    /**
+     * Construtor verifica se o usuario autenticado é um usuario comun ou um administrador.
+     */
     public function __construct()
     {
         $this->router = new Router(URL_BASE);
@@ -24,7 +31,13 @@ class AdminAreaController
         }
     }
 
-    // Roda para area central do admin
+
+    /**
+     * Rota para area central do admin.
+     * Rota do tipo GET, responsavel por renderizar a area de usuario.
+     * @param array $data.
+     * Variavel padrão para recebimento de dados das requisições. 
+     */
     public function adminArea($data)
     {
         $contact = new ContactDao();
@@ -32,6 +45,13 @@ class AdminAreaController
         $title = 'Gerenciar | ';
         require __DIR__ . "/../../views/admin/management.php";
     }
+
+    /**
+     * Rota para area central do admin.
+     * Rota do tipo POST, responsavel por definir um contato como resolvido.
+     * @param array $data.
+     * Variavel padrão para recebimento de dados das requisições. 
+     */
     public function adminAreaPost($data)
     {
         $contact = new ContactDao();
@@ -41,7 +61,13 @@ class AdminAreaController
 
 
 
-    // Rota para promover conta
+    
+    /**
+     * Rota para promover conta.
+     * Rota do tipo GET, responsavel por renderizar a area de promoção de usuario.
+     * @param array $data.
+     * Variavel padrão para recebimento de dados das requisições. 
+     */
     public function adminPromoter($data)
     {
         $title = 'Promover | ';
@@ -59,7 +85,7 @@ class AdminAreaController
                 }
             } else {
 
-                $find = htmlspecialchars(filter_input(INPUT_GET, 'busca', FILTER_SANITIZE_EMAIL)); 
+                $find = htmlspecialchars(filter_input(INPUT_GET, 'busca', FILTER_SANITIZE_EMAIL));
                 if (!$find || \is_numeric($find)) {
                     $alert = base64_encode("invalidemail");
                     $this->router->redirect("/admin/area/promover/{$alert}");
@@ -68,8 +94,8 @@ class AdminAreaController
 
             $search = new UserDao();
             $user = $search->search($findfor, $find);
-            if (is_string($user)) {
-                $alert = $user;
+            if ($user === []) {
+                $alert = base64_encode('noresult');
                 $this->router->redirect("/admin/area/promover/{$alert}");
             }
         }
@@ -78,12 +104,24 @@ class AdminAreaController
 
         require __DIR__ . "/../../views/admin/promoter.php";
     }
+
+    /**
+     * Rota para promover conta.
+     * Rota do tipo POST, responsavel por atualizar tipo de conta de usuario.
+     * @param array $data.
+     * Variavel padrão para recebimento de dados das requisições. 
+     */
     public function adminPromoterPost($data)
     {
-        $upgrade = new UserDao();
-        $alert = $upgrade->upgrade($data);
-        if ($alert) {
+        $alert = base64_encode('selecione');
+        if (isset($data['select']) && ($data['select'] !== [])) {
+            $upgrade = new UserDao();
+            $alert = $upgrade->upgrade($data);
+            if ($alert) {
 
+                $this->router->redirect("/admin/area/promover/{$alert}");
+            }
+        } else {
             $this->router->redirect("/admin/area/promover/{$alert}");
         }
     }

@@ -3,12 +3,10 @@
 require_once __DIR__ . '/../include/header.php';
 ?>
 
-
-<h2 class="titulo">Atualize seus dados </h2>;
-
+<h2 class="titulo">Atualize seus dados </h2>
 
 <?php
-// calbacks 
+// Area de alerta
 if (isset($data['updatealert'])) :
 
     $alert = base64_decode($data['updatealert']);
@@ -24,7 +22,7 @@ if (isset($data['updatealert'])) :
 endif;
 ?>
 
-<form class="cadastro" action="<?= url("usuario/area/atualizar") ?>" method="POST">
+<form class="cadastro" action="<?= url("usuario/area/atualizar");?>" method="POST">
     <fieldset id="attField">
         <p>Atualização cadastral</p>
 		<div class="justify">
@@ -51,16 +49,16 @@ endif;
         </fieldset>
 		</div>
         <div class="alinhado">
-          <?php 
-                if ($_SESSION['usuario']->tipo) :?> 
-                    
-                    <h3><a href="<?= url('admin/area') ?>">Voltar</a></h3>
-       
-        <?php   else :?>
-                    <h3><a href="<?= url('usuario/area/servicos') ?>">Gerenciar serviços</a></h3>
-	
-         <?php   endif; ?> 
-            
+<?php
+        if ($_SESSION['usuario']->tipo) :?>
+
+            <h3><a href="<?= url('admin/area') ?>">Voltar</a></h3>
+
+<?php else :?>
+        <h3><a href="<?= url('usuario/area/servicos') ?>">Gerenciar serviços</a></h3>
+
+<?php endif; ?>
+
         </div>
 
     </fieldset>

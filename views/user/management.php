@@ -8,7 +8,7 @@ require_once __DIR__ . '/../include/header.php';
 
 <div class="dados-fundo">
 <?php
-//callback
+// Area de alerta
 if (isset($data['servicesalert'])) :
 
     $alert = base64_decode($data['servicesalert']);

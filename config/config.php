@@ -1,8 +1,8 @@
 <?php
 // Seta o local especifico do host
-require_once "configFunc.php";
+require_once "ConfigUrl.php";
 
-$urlbase = protocol().$_SERVER['HTTP_HOST'].scriptName();
+$urlbase = ConfigUrl::protocol().$_SERVER['HTTP_HOST'].ConfigUrl::scriptName();
 define("URL_BASE", $urlbase);
 
 // Configuração de banco de dados

@@ -30,11 +30,14 @@ require_once __DIR__ . '/../include/header.php';
 </div>
 
 <section id='meusservicos' >
-    <h3>Últimos contatos</h3>
+    
 
     <?php
 
     // Lista contatos por data e situaçao
+    if (isset($result) && $result !== []):?>
+    <h3>Últimos contatos</h3>
+    <?php
     foreach ($result as $item) : ?>
         <br>
         <?php if (!$item->situacao) : ?>
@@ -74,7 +77,12 @@ require_once __DIR__ . '/../include/header.php';
             </div>
 
     <?php endif;
-    endforeach; ?>
+    endforeach; 
+else:?>
+    <h3>Não foram encontrados novos contatos</h3>
+<?php 
+endif;
+?>
 
 </section>
 

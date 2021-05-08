@@ -6,7 +6,7 @@ require_once __DIR__ . '/../include/header.php';
 <h1 class='titulo'>Cadastre-se</h1>
 
 <?php
-// callback area   
+// Area de alerta   
 if (isset($data['registeralert'])) :
 
     $alert = base64_decode($data['registeralert']);

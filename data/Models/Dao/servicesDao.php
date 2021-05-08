@@ -4,9 +4,15 @@ namespace Data\Models\Dao;
 
 use CoffeeCode\DataLayer\DataLayer;
 
+/**
+ * Classe ServicesDao
+ * Responsavel por persistir os dados de serviços em banco de dados.
+ */
 class servicesDao extends DataLayer
 {
-    //Abstração da tabela Cadastro para uso do Datalayer
+    /**
+     * Abstração da tabela Cadastro para uso do Datalayer utilizado para persistir os dados.
+     */
     public function __construct()
     {
         parent::__construct(
@@ -21,7 +27,10 @@ class servicesDao extends DataLayer
         );
     }
 
-    //Lista todos os serviços registrado e retorna para ServicesController:services
+    /**
+     * Lista todos os serviços registrados.
+     * @return array | Collection 
+     */ 
     public function listar()
     {
 
