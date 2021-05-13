@@ -9,6 +9,7 @@
     
     <title><?= $title ?>United Security© </title>
     
+	<link rel="shortcut icon" href="<?= url("/views/app/favicon.ico")?>">
     <link rel="stylesheet" href="<?= url("/views/app/css/style.css")?>">
     <script src="<?= url("/views/app/js/slider.js");?>"></script>
 
