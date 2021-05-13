@@ -35,10 +35,11 @@ class ConfigUrl
          * o objetivo aqui é pegar o nível de pasta onde hospeda-se o diretório
          * caso ele exista.
          */
-        if (empty($scr) || substr_count($scr, '/') <= 1) {
-            $scriptName = '/'; //atribui uma barra
-        } else {
+        if (empty($scr) || (substr_count($scr, '/') > 0) && strlen($scr) > 1) {
             $scriptName = $scr . '/'; //atribui o valor do diretório com uma "/" na sequência
+
+        } else {
+            $scriptName = '/'; //atribui uma barra
         }
         /**
          * Retorna o scriptName em formato string
