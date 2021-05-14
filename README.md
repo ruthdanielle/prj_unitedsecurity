@@ -11,7 +11,7 @@ Na aplicação contamos com uma tela de início que exemplifica os objetivos da 
 
 O sistema esta hospedado em uma instância EC2 na plataforma Amazom AWS, e pode ser acessado através do endereço abaixo:
 
-http://54.158.113.95/
+http://54.167.163.134/
 
 
 
